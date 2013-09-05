@@ -1,6 +1,7 @@
 var Ping = (function() {
 
     var ball = $('#ping-dot');
+    var wrap = $('.ping-wrap');
 
     function start() {
         ball.classList.add('go-right');
@@ -8,7 +9,7 @@ var Ping = (function() {
 
     function error() {
         ball.classList.remove('go-right', 'go-left');
-        ball.classList.add('error');
+        wrap.classList.add('error');
     }
 
     function toggle() {
