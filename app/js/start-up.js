@@ -23,10 +23,12 @@
         ES.addEventListener('error', connectionError, false);
         ES.addEventListener('ping', function(e) {
             console.log('ping');
+            Ping.toggle();
         }, false);
     }
 
     function connectionSuccess() {
+        Ping.start();
         console.log('Connected');   
     }
 

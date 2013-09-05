@@ -52,22 +52,35 @@ header label {
     height: 3px;
 }
 
+.ping-wrap.error {
+    background: red;
+}
+
+.error #ping-dot {
+    display: none;
+}
+
 #ping-dot {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -1px;
     background: #3ca5ca;
-    width: 3px;
-    height: 3px;
+    width: 5px;
+    height: 5px;
+    border-radius: 2px;
     display: block;
     line-height: 0;
-    -webkit-transition-duration: 30s;
+    -webkit-transition-duration: 15s;
     -webkit-transition-property: left;
-    -webkit-transition-property: ease-in;
+    -webkit-transition-timing-function: ease-in-out;
 }
 
-#ping-dot.go {
-    left: calc(100% - 3px);
+#ping-dot.go-right {
+    left: calc(100% - 5px);
+}
+
+#ping-dot.go-left {
+    left: 0;
 }
 
 .overview {
