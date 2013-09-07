@@ -28,6 +28,10 @@ p {
     padding: 0 0 20px;
 }
 
+section {
+    padding: 10px 20px;
+}
+
 header {
     overflow: hidden;
 }
@@ -67,7 +71,7 @@ header label {
     background: #3ca5ca;
     width: 5px;
     height: 5px;
-    border-radius: 2px;
+    border-radius: 0 0 2px 2px;
     display: block;
     line-height: 0;
     -webkit-transition-duration: 15s;
@@ -105,16 +109,6 @@ header label {
 
 .value {
     font-weight: bold;
-}
-
-.distribution {
-    padding: 12px 8px;
-}
-
-.distro-filler {
-    background: #ccc;
-    height: 25px;
-    width: 100%;
 }
 
 .overlay {

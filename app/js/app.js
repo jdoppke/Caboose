@@ -64,6 +64,6 @@ var Caboose = (function(){
     return {
         init: init,
         updateData: updateData
-    }
+    };
 
 })();

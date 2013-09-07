@@ -6,14 +6,13 @@
     <title>Caboose</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href='css/screen.css' rel='stylesheet'>
+    <link href='css/tables.css' rel='stylesheet'>
 </head>
 <body>
     <div class='container'>
-        <!-- might not be needed...-->
         <div class='ping-wrap'>
             <div id='ping-dot'></div>
         </div>
-        <!---->
         <section class='overview'>
             <div>
                 <span class='label'>Started</span>
@@ -33,24 +32,46 @@
             </div>
         </section>
         <section class='distribution'>
-            <header>
-                <h1>Distribution</h1>
-                <label>
-                    By
-                    <select>
-                        <option val=''>Count</option>
-                        <option val=''>Size</option>
-                    </select>
-                </label>
-            </header>
             <div class='distro-vis'></div>
         </section>
+
+        <section>
+            <table class='last-requests'>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>IP</th>
+                        <th>URL</th>
+                        <th>Method</th>
+                        <th>Response Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>[05/Feb/2012:17:11:55 +0000]</td>
+                        <td>10.22.1.73</td>
+                        <td>/page/requested/</td>
+                        <td>GET</td>
+                        <td>89 kb</td>
+                    </tr>
+                    <tr>
+                        <td>[05/Feb/2012:17:11:55 +0000]</td>
+                        <td>10.22.1.73</td>
+                        <td>/page/requested/</td>
+                        <td>GET</td>
+                        <td>89 kb</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
         <div class='overlay'></div>
         <section class='begin-modal'>
             <h1>Caboose</h1>
             <p>A visual way to monitor server logs.</p>
             <a id='start'>Start</a>
         </section>
+
     </div>
 
     <script src='js/d3.js'></script>

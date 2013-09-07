@@ -26,6 +26,6 @@ var Ping = (function() {
         start: start,
         error: error,
         toggle: toggle
-    }
+    };
 
 })();
