@@ -36,31 +36,18 @@
         </section>
 
         <section>
-            <table class='last-requests'>
+            <table class='request-table'>
                 <thead>
                     <tr>
                         <th>Timestamp</th>
                         <th>IP</th>
                         <th>URL</th>
                         <th>Method</th>
+                        <th>Serve Time</th>
                         <th>Response Size</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>[05/Feb/2012:17:11:55 +0000]</td>
-                        <td>10.22.1.73</td>
-                        <td>/page/requested/</td>
-                        <td>GET</td>
-                        <td>89 kb</td>
-                    </tr>
-                    <tr>
-                        <td>[05/Feb/2012:17:11:55 +0000]</td>
-                        <td>10.22.1.73</td>
-                        <td>/page/requested/</td>
-                        <td>GET</td>
-                        <td>89 kb</td>
-                    </tr>
+                <tbody class='request-table-body'>
                 </tbody>
             </table>
         </section>
@@ -77,6 +64,7 @@
     <script src='js/d3.js'></script>
     <script src='js/utility.js'></script>
     <script src='js/d3-distribution.js'></script>
+    <script src='js/request-table.js'></script>
 
     <script src='js/ping.js'></script>
     <script src='js/app.js'></script>

@@ -6,12 +6,20 @@ var Caboose = (function(){
 
     function updateData(d) {
 
-        console.log(d);
+        try {
+            var data = JSON.parse(d.data);
+        } catch (e) {
+            console.log(e);
+        }
+
+        if (data) {
+            console.log(data);
+            Table.update(data);
+        }
 /*
         Test code below...
         totalReqRawCount++;
 
-        var r = JSON.parse(d.data);
 
         // Set first and last date
         if (!firstReqVal) { firstReqVal = r['date']; }
