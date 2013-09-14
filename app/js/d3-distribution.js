@@ -6,6 +6,8 @@ var Distribution = (function() {
     var width  = divWidth - margin.left - margin.right;
     var height = 30 - margin.top - margin.bottom;
 
+    var colors = d3.scale.category10();
+
     var x = d3.scale.linear()
         .range([0, width])
         .domain([0, 100]);
@@ -31,7 +33,7 @@ var Distribution = (function() {
                 leftPos = leftPos += x(d['value']);
                 return tran;
             })
-            .attr('fill', function(d, i) { return COLORS(i); });
+            .attr('fill', function(d, i) { return colors(i); });
 
         leftPos = 0;
 
@@ -44,7 +46,7 @@ var Distribution = (function() {
                 leftPos = leftPos += x(d['value']);
                 return tran;
             })
-            .attr('fill', function(d, i) { return COLORS(i); });
+            .attr('fill', function(d, i) { return colors(i); });
 
     }
 

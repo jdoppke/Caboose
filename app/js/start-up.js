@@ -11,7 +11,6 @@
     function startLog(e) {
         overlay.remove();
         modal.remove();
-
         makeConnection();
     }
 

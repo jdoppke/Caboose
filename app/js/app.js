@@ -4,6 +4,44 @@ var Caboose = (function(){
     var requestSize  = 0;
     var reqTypeCount = {};
 
+    function _incrementData(data) {
+        requestCount++;
+        requestSize += ++data['bytes'];
+    }
+
+    function _formatFileData(data) {
+        var file = data['file'];
+        var dot  = file.indexOf('.');
+
+        // Get the file extension if there is one
+        if (dot !== -1) {
+            var ext  = file.substring(dot + 1, file.length);
+
+            if (!reqTypeCount[ext]) {
+                reqTypeCount[ext] = 0;
+            }
+
+            reqTypeCount[ext]++;
+
+            var newData = (function() {
+                var d = [];
+                for (var prop in reqTypeCount) {
+                    console.log(requestCount);
+                    d.push({
+                        'type': prop,
+                        'value': (reqTypeCount[prop]/requestCount) * 100
+                    });
+                }
+                return d;
+            })();
+
+        } else {
+            // Otherwise it's *probably* a path for a page (/user/name/),
+            // might need some tweaking. Will eventually store the path.
+            reqTypeCount['path']++;
+        }
+        return newData;
+    }
 
     function updateData(d) {
 
@@ -15,66 +53,12 @@ var Caboose = (function(){
 
         if (data) {
             console.log(data);
-
-            requestCount++;
-            requestSize += ++data['bytes'];
-
-            // Set request type/count
-            var file = r['file'];
-            var dot  = file.indexOf('.');
-
-            // If there is a dot, get the file extension
-            if (dot != -1) {
-                var ext  = file.substring(dot + 1, file.length);
-
-                if (!reqTypeCount[ext]) {
-                    reqTypeCount[ext] = 0;
-                }
-
-                reqTypeCount[ext]++;
-
-                var newData = (function() {
-                    var d = [];
-                    for (var prop in reqTypeCount) {
-                        console.log(totalReqRawCount);
-                        d.push({
-                            'type': prop,
-                            'value': (reqTypeCount[prop]/totalReqRawCount) * 100
-                        });
-                    }
-                    return d;
-                })();
-
-                Distribution.update(newData);
-
-            } else {
-                // Otherwise it's *probably* a path for a page (/user/name/),
-                // might need some tweaking. Will eventually store the path.
-                reqTypeCount['path']++;
-            }
-
+            _incrementData(data);
+            Distribution.update(_formatFileData(data));
             StatusBar.update(requestCount, requestSize);
             Table.update(data);
         }
-/*
-        Test code below...
-        totalReqRawCount++;
 
-
-        // Set first and last date
-        if (!firstReqVal) { firstReqVal = r['date']; }
-        lastReqVal= r['date'];
-
-        
-
-        totalSizeReqRawCount += +r['bytes'];
-
-        // Update UI
-        firstReq.textContent = firstReqVal;
-        lastReq.textContent = lastReqVal;
-        totalReq.textContent = totalReqRawCount; 
-        totalSizeReq.textContent = formatBytes(totalSizeReqRawCount);
-*/
     }
 
     return {
