@@ -1,5 +1,7 @@
 var Caboose = (function(){
 
+    var requestCount = 0;
+
     function init() {
         // Set up selectors/variables...
     }
@@ -14,6 +16,11 @@ var Caboose = (function(){
 
         if (data) {
             console.log(data);
+
+            requestCount++;
+
+
+            StatusBar.update(requestCount);
             Table.update(data);
         }
 /*
