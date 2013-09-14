@@ -1,6 +1,7 @@
 var Caboose = (function(){
 
     var requestCount = 0;
+    var requestSize  = 0;
 
     function init() {
         // Set up selectors/variables...
@@ -18,9 +19,9 @@ var Caboose = (function(){
             console.log(data);
 
             requestCount++;
+            requestSize += ++data['bytes'];
 
-
-            StatusBar.update(requestCount);
+            StatusBar.update(requestCount, requestSize);
             Table.update(data);
         }
 /*
