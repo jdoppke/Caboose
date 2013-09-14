@@ -2,10 +2,8 @@ var Caboose = (function(){
 
     var requestCount = 0;
     var requestSize  = 0;
+    var reqTypeCount = {};
 
-    function init() {
-        // Set up selectors/variables...
-    }
 
     function updateData(d) {
 
@@ -21,6 +19,40 @@ var Caboose = (function(){
             requestCount++;
             requestSize += ++data['bytes'];
 
+            // Set request type/count
+            var file = r['file'];
+            var dot  = file.indexOf('.');
+
+            // If there is a dot, get the file extension
+            if (dot != -1) {
+                var ext  = file.substring(dot + 1, file.length);
+
+                if (!reqTypeCount[ext]) {
+                    reqTypeCount[ext] = 0;
+                }
+
+                reqTypeCount[ext]++;
+
+                var newData = (function() {
+                    var d = [];
+                    for (var prop in reqTypeCount) {
+                        console.log(totalReqRawCount);
+                        d.push({
+                            'type': prop,
+                            'value': (reqTypeCount[prop]/totalReqRawCount) * 100
+                        });
+                    }
+                    return d;
+                })();
+
+                Distribution.update(newData);
+
+            } else {
+                // Otherwise it's *probably* a path for a page (/user/name/),
+                // might need some tweaking. Will eventually store the path.
+                reqTypeCount['path']++;
+            }
+
             StatusBar.update(requestCount, requestSize);
             Table.update(data);
         }
@@ -33,39 +65,7 @@ var Caboose = (function(){
         if (!firstReqVal) { firstReqVal = r['date']; }
         lastReqVal= r['date'];
 
-        // Set request type/count
-        var file = r['file'];
-        var dot  = file.indexOf('.');
-
-        // If there is a dot, get the file extension
-        if (dot != -1) {
-            var ext  = file.substring(dot + 1, file.length);
-
-            if (!reqTypeCount[ext]) {
-                reqTypeCount[ext] = 0;
-            }
-
-            reqTypeCount[ext]++;
-
-            var newData = (function() {
-                var d = [];
-                for (var prop in reqTypeCount) {
-                    console.log(totalReqRawCount);
-                    d.push({
-                        'type': prop,
-                        'value': (reqTypeCount[prop]/totalReqRawCount) * 100
-                    });
-                }
-                return d;
-            })();
-
-            Distribution.update(newData);
-
-        } else {
-            // Otherwise it's *probably* a path for a page (/user/name),
-            // might need some tweaking. Will eventually store the path.
-            reqTypeCount['path']++;
-        }
+        
 
         totalSizeReqRawCount += +r['bytes'];
 
@@ -78,7 +78,6 @@ var Caboose = (function(){
     }
 
     return {
-        init: init,
         updateData: updateData
     };
 

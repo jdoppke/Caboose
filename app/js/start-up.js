@@ -12,7 +12,6 @@
         overlay.remove();
         modal.remove();
 
-        Caboose.init();
         makeConnection();
     }
 

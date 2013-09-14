@@ -4,8 +4,8 @@ var StatusBar = (function() {
     var totalSizeElem = $('#total-size');
 
     function update(totalReq, totalSize) {
-        reqCntElem.innerHTML = totalReq;
-        totalSizeElem.innerHTML = getReadableSize(totalSize);
+        reqCntElem.textContent = totalReq;
+        totalSizeElem.textContent = getReadableSize(totalSize);
     }
 
     return {
