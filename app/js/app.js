@@ -26,7 +26,6 @@ var Caboose = (function(){
             var newData = (function() {
                 var d = [];
                 for (var prop in reqTypeCount) {
-                    console.log(requestCount);
                     d.push({
                         'type': prop,
                         'value': (reqTypeCount[prop]/requestCount) * 100

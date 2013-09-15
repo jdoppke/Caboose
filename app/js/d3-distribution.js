@@ -1,5 +1,7 @@
 var Distribution = (function() {
 
+    // TODO: Need to add labels and make colors match globally.
+
     var divWidth = $('.distro-vis').offsetWidth;
 
     var margin = {top: 0, right: 0, bottom: 0, left: 0};
