@@ -26,8 +26,8 @@ var Distribution = (function() {
         var rect = SVG.selectAll('rect')
             .data(data);
 
-        rect.enter()
-            .append('rect')
+        rect
+            //.transition()
             .attr('width', function(d) { return x(d['value']); })
             .attr('height', 20)
             .attr('transform', function(d) {
@@ -37,10 +37,8 @@ var Distribution = (function() {
             })
             .attr('fill', function(d, i) { return colors(i); });
 
-        leftPos = 0;
-
-        rect
-            .transition()
+        rect.enter()
+            .append('rect')
             .attr('width', function(d) { return x(d['value']); })
             .attr('height', 20)
             .attr('transform', function(d) {
