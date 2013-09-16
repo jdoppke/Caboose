@@ -4,31 +4,35 @@ var Timer = (function(){
     var timeout;
     var hourOffset;
     var timeElem = $("#running-time");
+    var startElem = $("#first-request");
 
     function _addLeadingZero(val) {
         return (val < 10) ? ("0" + val) : val;
     }
 
-    function _updateTime() {
-        var timeDiff = new Date((new Date() - startTime));
-
-        var sec  = timeDiff.getSeconds();
+    function _formatTime(date) {
+        var sec  = date.getSeconds();
         sec = _addLeadingZero(sec);
 
-        var min  = timeDiff.getMinutes();
+        var min  = date.getMinutes();
         min = _addLeadingZero(min);
 
-        var hour = timeDiff.getHours();
+        var hour = date.getHours();
         hour = hour - hourOffset;
         hour = _addLeadingZero(hour);
 
-        var timeStr = hour + ':' + min + ':' + sec; 
-        timeElem.textContent = timeStr;
+        return hour + ':' + min + ':' + sec; 
+    }
+
+    function _updateTime() {
+        var timeDiff = new Date((new Date() - startTime));
+        timeElem.textContent = _formatTime(timeDiff);
     }
 
     function start() {
         startTime = new Date();
         hourOffset = (new Date(1)).getHours();
+        //startElem.textContent = _formatTime(startTime);
         timeout = setInterval(_updateTime, 1000);
     }
 
