@@ -24,6 +24,7 @@
 
     function connectionSuccess() {
         Ping.start();
+        Timer.start();
         console.log('Connected');   
     }
 
