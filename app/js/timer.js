@@ -13,7 +13,6 @@ var Timer = (function(){
     function _formatDate(date) {
         var mon = date.getMonth() + 1;
         var date = date.getDate();
-
         return mon + '/' + date;
     }
 
