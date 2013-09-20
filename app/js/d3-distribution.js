@@ -79,7 +79,6 @@ var Distribution = (function() {
             })
             .attr('fill', function(d, i) { return colors(i); });
 
-
     }
 
     return {
