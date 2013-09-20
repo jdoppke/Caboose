@@ -143,9 +143,3 @@ header label {
     border-radius: 1px;
     background: #ebebeb;
 }
-
-text {
-    font-size: 12px;
-    fill: #333;
-    text-anchor: middle;
-}

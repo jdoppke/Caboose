@@ -6,7 +6,7 @@ var Distribution = (function() {
 
     var margin = {top: 0, right: 0, bottom: 0, left: 0};
     var width  = divWidth - margin.left - margin.right;
-    var height = 30 - margin.top - margin.bottom;
+    var height = 50 - margin.top - margin.bottom;
 
     var barHeight = 20;
 
@@ -15,16 +15,7 @@ var Distribution = (function() {
     var x = d3.scale.linear()
         .range([0, width])
         .domain([0, 100]);
-/*
-    var threshold = d3.scale.threshold()
-        .domain([0,100]);
 
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient('bottom')
-        .tickSize(13)
-        .tickFormat(function(d) { return d['value']; });
-*/
     var SVG = d3.select('.distro-vis')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
@@ -33,17 +24,16 @@ var Distribution = (function() {
     var rectGroup = SVG.append('g')
         .attr('class', 'rect-group');
 
-    var textGroup = SVG.append('g');
-
-//    SVG.call(xAxis);
+    var textGroup = SVG.append('g')
+        .attr('class', 'label-group');
 
     function update(data) {
-
-        console.log(data);
 
         var leftPos = 0;
         var textLeft = 0;
 
+        // Just adding the text labels here.
+        // Is there a better way to do this in d3?
         var text = textGroup.selectAll('text')
             .data(data);
 
@@ -63,6 +53,7 @@ var Distribution = (function() {
                 textLeft = textLeft += x(d['value']);
                 return tran;
         }).text(function(d) { return d['type']; });
+
 
         var rect = rectGroup.selectAll('rect')
             .data(data);
