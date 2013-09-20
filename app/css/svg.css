@@ -1,5 +1,20 @@
 text {
     font-size: 11px;
     fill: #333;
+    stroke: none;
     text-anchor: middle;
+}
+
+.axis {
+    shape-rendering: crispEdges;
+}
+
+.axis, .line {
+    stroke: #000;
+    fill: none;
+}
+
+.line {
+    stroke: #333333;
+    stroke-width: 1.5px;
 }
