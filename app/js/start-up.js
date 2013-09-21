@@ -25,6 +25,7 @@
     function connectionSuccess() {
         Ping.start();
         Timer.start();
+        Timeline.start();
         console.log('Connected');   
     }
 

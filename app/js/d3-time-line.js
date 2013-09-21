@@ -3,15 +3,13 @@ var Timeline = (function() {
     var timePeriod = 180;  // Last 3 min
     var n          = 180 + 3;
     var duration   = 1000;
-    var now        = new Date(Date.now() - duration);
+    var axis;
+    var now;
+    var x;
 
     var margin = { top: 6, right: 0, bottom: 20, left: 0 };
     var width  = $('.time-line-vis').offsetWidth;
     var height = 120;
-
-    var x = d3.time.scale()
-        .domain([now-(n-2) * duration, now - duration])
-        .range([0, width]);
 
     var y = d3.scale.linear()
         .range([height, 0]);
@@ -30,13 +28,37 @@ var Timeline = (function() {
         .attr('width', width)
         .attr('height', height);
 
-    var axis = wrap.append('g')
-        .attr('class', 'x axis')
-        .attr('transform', 'translate(0, ' + height + ')')
-        .call(x.axis = d3.svg.axis().scale(x).orient('bottom'));
+    function _cycle() {
+
+        now = new Date();
+        x.domain([now-(n-2) * duration, now - duration]);
+
+        axis.transition()
+            .duration(duration)
+            .ease('linear')
+            .call(x.axis)
+            .each('end', _cycle);
+
+    }
+
+    function start() {
+
+        now = new Date(Date.now() - duration);
+
+        x = d3.time.scale()
+            .domain([now-(n-2) * duration, now - duration])
+            .range([0, width]);
+
+        axis = wrap.append('g')
+            .attr('class', 'x axis')
+            .attr('transform', 'translate(0, ' + height + ')')
+            .call(x.axis = d3.svg.axis().scale(x).orient('bottom'));
+
+        _cycle();
+    }
 
     return {
-    
+        start: start
     };
 
 })();
