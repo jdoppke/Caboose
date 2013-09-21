@@ -3,9 +3,15 @@ var Timeline = (function() {
     var timePeriod = 180;  // Last 3 min
     var n          = 180 + 3;
     var duration   = 1000;
+    var data       = d3.range(n).map(function() { return 0; });
     var axis;
     var now;
     var x;
+
+    var line;
+    var path;
+
+    var requestCount = 0;
 
     var margin = { top: 6, right: 0, bottom: 20, left: 0 };
     var width  = $('.time-line-vis').offsetWidth;
@@ -31,7 +37,20 @@ var Timeline = (function() {
     function _cycle() {
 
         now = new Date();
+
         x.domain([now-(n-2) * duration, now - duration]);
+        y.domain([0, d3.max(data, function(d) { return d; })]);
+
+        data.push(requestCount);
+
+        wrap.select('.line')
+            .attr('d', line)
+            .attr('transform', null);
+
+        path.transition()
+            .duration(duration)
+            .ease('linear')
+            .attr('transform', 'translate(' + x(now-(n-1) * duration) + ')');
 
         axis.transition()
             .duration(duration)
@@ -39,11 +58,27 @@ var Timeline = (function() {
             .call(x.axis)
             .each('end', _cycle);
 
+        data.shift();
+        requestCount = 0;
+
     }
 
     function start() {
 
         now = new Date(Date.now() - duration);
+
+        // Initialize line, this will have to be updated to properly reflect
+        // the time the request was made (not using now).
+        line = d3.svg.line()
+            .interpolate('basis')
+            .x(function(d, i) { return x(now - (n - 1 - i) * duration); })
+            .y(function(d, i) { return y(d); });
+
+        path = wrap.append('g')
+            .attr('clip-path', 'url(#clip)')
+            .append('path')
+            .data([data])
+            .attr('class', 'line');
 
         x = d3.time.scale()
             .domain([now-(n-2) * duration, now - duration])
@@ -57,8 +92,13 @@ var Timeline = (function() {
         _cycle();
     }
 
+    function incrementReqCount() {
+        requestCount++;
+    }
+
     return {
-        start: start
+        start: start,
+        incrementReqCount: incrementReqCount
     };
 
 })();
