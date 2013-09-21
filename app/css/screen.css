@@ -21,7 +21,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 1.6em;
+    font-variant: small-caps;
 }
 
 p {
@@ -142,4 +143,41 @@ header label {
     color: #333;
     border-radius: 1px;
     background: #ebebeb;
+}
+
+footer {
+    clear: both;
+    overflow: hidden;
+    border-top: 1px solid #bbb;
+    color: #999;
+    font-size: 11px;
+    padding: 10px;
+    margin: 20px;
+}
+
+footer a {
+    color: #999;
+    text-decoration: underline;
+}
+
+footer ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+footer ul li {
+    float: left;
+    margin-right: 12px;
+}
+
+footer p {
+    float: right;
+}
+
+footer span {
+    font-family: Lato, helvetica, arial, sans-serif;
+    font-variant: small-caps;
 }
