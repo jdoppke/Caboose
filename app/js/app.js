@@ -53,7 +53,8 @@ var Caboose = (function(){
         if (data) {
             console.log(data);
             _incrementData(data);
-            Distribution.update(_formatFileData(data));
+            BreakDown.update(_formatFileData(data));
+            //Distribution.update(_formatFileData(data));
             Timeline.incrementReqCount();
             StatusBar.update(requestCount, requestSize);
             FireLine.fire();

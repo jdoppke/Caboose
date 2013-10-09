@@ -10,8 +10,6 @@ var Distribution = (function() {
 
     var barHeight = 20;
 
-    var colors = d3.scale.category10();
-
     var x = d3.scale.linear()
         .range([0, width])
         .domain([0, 100]);
