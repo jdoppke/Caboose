@@ -19,6 +19,7 @@ var BreakDown = (function() {
 
     var yAxis = d3.svg.axis()
         .scale(y)
+        .ticks(5)
         .orient("left");
 
     var svg = d3.select(".distro-vis")
@@ -39,8 +40,6 @@ var BreakDown = (function() {
 
     function update(newData) {
 
-        console.log(newData);
-
         // Map new types to x-domain and update x-axis
         x.domain(newData.map(function(d) { return d.type; }));
         d3.selectAll(".distro-vis .x.axis").call(xAxis);
@@ -51,6 +50,7 @@ var BreakDown = (function() {
 
         svg.selectAll('.points')
             .data(newData)
+            .transition()
             .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
             .attr("cy", function(d) { return y(d.value); });
 
