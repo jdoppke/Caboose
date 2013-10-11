@@ -1,6 +1,6 @@
 text {
     font-size: 10px;
-    fill: #333;
+    fill: #666;
     stroke: none;
     text-anchor: middle;
 }
@@ -10,11 +10,15 @@ text {
 }
 
 .axis, .line {
-    stroke: #000;
+    stroke: #777;
     fill: none;
 }
 
 .line {
-    stroke: #333333;
+    stroke: #333;
     stroke-width: 1.5px;
+}
+
+.points {
+    fill: #70A0D5;
 }
