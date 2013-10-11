@@ -39,6 +39,8 @@ var BreakDown = (function() {
 
     function update(newData) {
 
+        console.log(newData);
+
         // Map new types to x-domain and update x-axis
         x.domain(newData.map(function(d) { return d.type; }));
         d3.selectAll(".distro-vis .x.axis").call(xAxis);
@@ -47,25 +49,19 @@ var BreakDown = (function() {
         y.domain([0, d3.max(newData, function(d) { return d.value + 5; })]);
         d3.selectAll(".distro-vis .y.axis").call(yAxis);
 
-        // Update current data set
-        svg.selectAll('.bar')
+        svg.selectAll('.points')
             .data(newData)
-            .attr("class", "bar")
-            .attr("x", function(d) { return x(d.type); })
-            .attr("y", function(d) { return y(d.value); })
-            .attr("width", x.rangeBand())
-            .attr("height", function(d) { return height - y(d.value); });
+            .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
+            .attr("cy", function(d) { return y(d.value); });
 
-        // Add new data set
-        svg.selectAll('.bar')
+        svg.selectAll('.points')
             .data(newData)
             .enter()
-            .append("rect")
-            .attr("class", "bar")
-            .attr("x", function(d) { return x(d.type); })
-            .attr("y", function(d) { return y(d.value); })
-            .attr("width", x.rangeBand())
-            .attr("height", function(d) { return height - y(d.value); });
+            .append("circle")
+            .attr("class", "points")
+            .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
+            .attr("cy", function(d) { return y(d.value); })
+            .attr("r", 3);
 
     }
 
