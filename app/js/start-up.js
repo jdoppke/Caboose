@@ -25,11 +25,12 @@
     function connectionSuccess() {
         Timer.start();
         Timeline.start();
-        console.log('Connected');   
+        StatusBar.setSuccess("Connected");
     }
 
     function connectionError(e) {
         ES.close();
+        StatusBar.setError("Check event source server or resource.");
         console.log('Check event source server or resource.');
         console.log(e);   
     }

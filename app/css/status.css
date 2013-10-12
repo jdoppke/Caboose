@@ -1,0 +1,22 @@
+.status {
+    height: 0;
+    line-height: 30px;
+    padding: 0 10px;
+    overflow: hidden;
+    -webkit-transition: height .33s linear, border .33s linear;
+}
+
+.status.open {
+    height: 30px;
+    border-top: 2px solid;
+}
+
+.status.success {
+    background: #CEF8CE;
+    border-color: green;
+}
+
+.status.error {
+    background: #FAD7D7;
+    border-color: red;
+}
