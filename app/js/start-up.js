@@ -6,6 +6,8 @@
     var startButton = $('#start');
     var ES;
 
+    var errorStr = "Error connecting, check event source server or resource.";
+
     startButton.addEventListener('click', startLog, false);
 
     function startLog(e) {
@@ -19,20 +21,19 @@
         ES.addEventListener('open', connectionSuccess, false);
         ES.addEventListener('message', Caboose.updateData, false);
         ES.addEventListener('error', connectionError, false);
-        //ES.addEventListener('ping', Ping.toggle, false);
+        ES.addEventListener('ping', function() {} false);
     }
 
     function connectionSuccess() {
         Timer.start();
         Timeline.start();
-        StatusBar.setSuccess("Connected");
+        StatusBar.setSuccess("Successfully connected.");
     }
 
     function connectionError(e) {
         ES.close();
-        StatusBar.setError("Check event source server or resource.");
-        console.log('Check event source server or resource.');
-        console.log(e);   
+        StatusBar.setError(errorStr);
+        console.log(errorStr);
     }
 
 })();
