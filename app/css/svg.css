@@ -19,10 +19,9 @@ text {
     stroke-width: 1.5px;
 }
 
-.points {
-    stroke: #70A0D5;
-    stroke-width: 2px;
-    fill: none;
+.bars {
+    fill: #9BBADB;
+    shape-rendering: crispEdges;
 }
 
 .grid line {

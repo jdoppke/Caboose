@@ -21,7 +21,7 @@
         ES.addEventListener('open', connectionSuccess, false);
         ES.addEventListener('message', Caboose.updateData, false);
         ES.addEventListener('error', connectionError, false);
-        ES.addEventListener('ping', function() {} false);
+        ES.addEventListener('ping', function() {}, false);
     }
 
     function connectionSuccess() {

@@ -68,22 +68,25 @@ var BreakDown = (function() {
 
         yGrid.call(_makeXaxis().tickSize(-width, 0, 0).tickFormat(""));
 
-        var pointSel = svg.selectAll(".points").data(newData);
+        var rectSel = svg.selectAll(".bars").data(newData);
 
-        pointSel
+        rectSel
             .transition()
-            .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
-            .attr("cy", function(d) { return y(d.value); });
+            .attr("x", function(d) { return x(d.type); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("width", function(d) { return x.rangeBand(); })
+            .attr("height", function(d) { return height-y(d.value); });
 
-        pointSel
+        rectSel
             .enter()
-            .append("circle")
-            .attr("class", "points")
-            .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
-            .attr("cy", function(d) { return y(d.value); })
-            .attr("r", 3);
-
+            .append("rect")
+            .attr("class", "bars")
+            .attr("x", function(d) { return x(d.type); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("width", function(d) { return x.rangeBand(); })
+            .attr("height", function(d) { return height-y(d.value); });
     }
+    
 
     return {
         update: update
