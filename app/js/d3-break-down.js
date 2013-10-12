@@ -38,24 +38,28 @@ var BreakDown = (function() {
         .attr("class", "y axis")
         .call(yAxis);
 
+    var xAxisSel = d3.selectAll(".distro-vis .x.axis");
+    var yAxisSel = d3.selectAll(".distro-vis .y.axis");
+
     function update(newData) {
 
         // Map new types to x-domain and update x-axis
         x.domain(newData.map(function(d) { return d.type; }));
-        d3.selectAll(".distro-vis .x.axis").call(xAxis);
+        xAxisSel.call(xAxis);
 
         // Update y-domain and update y-axis
         y.domain([0, d3.max(newData, function(d) { return d.value + 5; })]);
-        d3.selectAll(".distro-vis .y.axis").call(yAxis);
+        yAxisSel.call(yAxis);
 
-        svg.selectAll('.points')
-            .data(newData)
+        var pointSel = svg.selectAll(".points")
+            .data(newData);
+
+        pointSel
             .transition()
             .attr("cx", function(d) { return x(d.type) + (x.rangeBand() / 2); })
             .attr("cy", function(d) { return y(d.value); });
 
-        svg.selectAll('.points')
-            .data(newData)
+        pointSel
             .enter()
             .append("circle")
             .attr("class", "points")
