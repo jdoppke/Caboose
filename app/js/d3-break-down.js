@@ -51,8 +51,7 @@ var BreakDown = (function() {
         y.domain([0, d3.max(newData, function(d) { return d.value + 5; })]);
         yAxisSel.call(yAxis);
 
-        var pointSel = svg.selectAll(".points")
-            .data(newData);
+        var pointSel = svg.selectAll(".points").data(newData);
 
         pointSel
             .transition()
