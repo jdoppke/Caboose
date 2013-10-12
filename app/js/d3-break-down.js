@@ -7,6 +7,12 @@ var BreakDown = (function() {
             .ticks(5);
     }
 
+    function _formatTransformStr(d) {
+        var xCoor = x(d.type) + (x.rangeBand() / 2);
+        var yCoor = y(d.value) - 2;
+        return "translate("+xCoor+","+yCoor+")";
+    }
+
     var divWidth = $('.distro-vis').offsetWidth;
 
     var margin = {top: 10, right: 5, bottom: 20, left: 30};
@@ -90,22 +96,14 @@ var BreakDown = (function() {
 
         valSel
             .transition()
-            .attr("transform", function(d) {
-                var xCoor = x(d.type) + (x.rangeBand() / 2);
-                var yCoor = y(d.value) - 2;
-                return "translate("+xCoor+","+yCoor+")";
-            })
+            .attr("transform", _formatTransformStr)
             .text(function(d) { return Math.round(d.value) + '%'; });
 
         valSel
             .enter()
             .append("text")
             .attr("class", "bar-values")
-            .attr("transform", function(d) {
-                var xCoor = x(d.type) + (x.rangeBand() / 2);
-                var yCoor = y(d.value) - 2;
-                return "translate("+xCoor+","+yCoor+")";
-            })
+            .attr("transform", _formatTransformStr)
             .text(function(d) { return Math.round(d.value) + '%'; });
 
     }
