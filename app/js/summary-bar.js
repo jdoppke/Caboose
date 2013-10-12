@@ -1,4 +1,4 @@
-var StatusBar = (function() {
+var SummaryBar = (function() {
 
     var reqCntElem = $('#total-request');
     var totalSizeElem = $('#total-size');

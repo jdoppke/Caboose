@@ -19,11 +19,10 @@
         ES.addEventListener('open', connectionSuccess, false);
         ES.addEventListener('message', Caboose.updateData, false);
         ES.addEventListener('error', connectionError, false);
-        ES.addEventListener('ping', Ping.toggle, false);
+        //ES.addEventListener('ping', Ping.toggle, false);
     }
 
     function connectionSuccess() {
-        Ping.start();
         Timer.start();
         Timeline.start();
         console.log('Connected');   
@@ -31,7 +30,6 @@
 
     function connectionError(e) {
         ES.close();
-        Ping.error();
         console.log('Check event source server or resource.');
         console.log(e);   
     }

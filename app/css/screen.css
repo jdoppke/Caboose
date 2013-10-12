@@ -50,44 +50,6 @@ header label {
     margin: 0 auto;
 }
 
-.ping-wrap {
-    width: 100%;
-    position: relative;
-    background: #000;
-    height: 3px;
-}
-
-.ping-wrap.error {
-    background: red;
-}
-
-.error #ping-dot {
-    display: none;
-}
-
-#ping-dot {
-    position: absolute;
-    left: 0;
-    top: -1px;
-    background: #3ca5ca;
-    width: 5px;
-    height: 5px;
-    border-radius: 0 0 2px 2px;
-    display: block;
-    line-height: 0;
-    -webkit-transition-duration: 15s;
-    -webkit-transition-property: left;
-    -webkit-transition-timing-function: ease-in-out;
-}
-
-#ping-dot.go-right {
-    left: calc(100% - 5px);
-}
-
-#ping-dot.go-left {
-    left: 0;
-}
-
 .overview {
     background: #f1f1f1;
     padding: 7px 0;
