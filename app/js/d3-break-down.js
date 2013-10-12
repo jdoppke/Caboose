@@ -9,7 +9,7 @@ var BreakDown = (function() {
 
     var divWidth = $('.distro-vis').offsetWidth;
 
-    var margin = {top: 7, right: 5, bottom: 20, left: 30};
+    var margin = {top: 10, right: 5, bottom: 20, left: 30};
     var width  = divWidth - margin.left - margin.right;
     var height = 100 - margin.top - margin.bottom;
 
@@ -85,6 +85,29 @@ var BreakDown = (function() {
             .attr("y", function(d) { return y(d.value); })
             .attr("width", function(d) { return x.rangeBand(); })
             .attr("height", function(d) { return height-y(d.value); });
+
+        var valSel = svg.selectAll(".bar-values").data(newData);
+
+        valSel
+            .transition()
+            .attr("transform", function(d) {
+                var xCoor = x(d.type) + (x.rangeBand() / 2);
+                var yCoor = y(d.value) - 2;
+                return "translate("+xCoor+","+yCoor+")";
+            })
+            .text(function(d) { return Math.round(d.value) + '%'; });
+
+        valSel
+            .enter()
+            .append("text")
+            .attr("class", "bar-values")
+            .attr("transform", function(d) {
+                var xCoor = x(d.type) + (x.rangeBand() / 2);
+                var yCoor = y(d.value) - 2;
+                return "translate("+xCoor+","+yCoor+")";
+            })
+            .text(function(d) { return Math.round(d.value) + '%'; });
+
     }
     
 
