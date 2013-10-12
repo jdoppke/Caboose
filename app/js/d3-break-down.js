@@ -72,8 +72,10 @@ var BreakDown = (function() {
         y.domain([0, d3.max(newData, function(d) { return d.value; })]);
         yAxisSel.call(yAxis);
 
+        // Update grid lines
         yGrid.call(_makeXaxis().tickSize(-width, 0, 0).tickFormat(""));
 
+        // Select, update, draw rect
         var rectSel = svg.selectAll(".bars").data(newData);
 
         rectSel
@@ -92,6 +94,7 @@ var BreakDown = (function() {
             .attr("width", function(d) { return x.rangeBand(); })
             .attr("height", function(d) { return height-y(d.value); });
 
+        // Select, update, draw labels
         var valSel = svg.selectAll(".bar-values").data(newData);
 
         valSel
@@ -107,7 +110,6 @@ var BreakDown = (function() {
             .text(function(d) { return Math.round(d.value) + '%'; });
 
     }
-    
 
     return {
         update: update
