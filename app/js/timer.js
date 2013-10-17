@@ -40,15 +40,13 @@ var Timer = (function(){
         return hours + ":" + min + ":" + sec;
     }
 
-    function _updateTime() {
+    function updateTime() {
+        if (!startTime) {
+            startTime = new Date();
+            startElem.textContent = _formatDate(startTime) + ' @ ' + _formatTime(startTime);
+        }
         var timeDiffInSec = (new Date() - startTime);
         timeElem.textContent = _formatDuration(timeDiffInSec/1000);
-    }
-
-    function start() {
-        startTime = new Date();
-        startElem.textContent = _formatDate(startTime) + ' @ ' + _formatTime(startTime);
-        timeout = setInterval(_updateTime, 1000);
     }
 
     function updateLastReq() {
@@ -57,7 +55,7 @@ var Timer = (function(){
     }
 
     return {
-        start: start,
+        updateTime: updateTime,
         updateLastReq: updateLastReq
     };
 

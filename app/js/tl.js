@@ -4,7 +4,7 @@ var TL = (function() {
         return new Date(endTimeReference - (duration * 60 * 1000));
     }
 
-    function _tick() {
+    function tick() {
         x.domain([_startTime(new Date()), new Date()]);
         xAxisSel.call(xAxis);
     }
@@ -17,7 +17,7 @@ var TL = (function() {
     var endTime = new Date();
     var duration = 3; // In minutes
     var startTime = _startTime(endTime);
-    var UPDATE_INTERVAL = 500;
+    var UPDATE_INTERVAL = 1000;
 
     var x = d3.time.scale()
         .domain([startTime, endTime])
@@ -54,9 +54,10 @@ var TL = (function() {
 
     var xAxisSel = svg.selectAll(".x-axis");
 
-    setInterval(_tick, UPDATE_INTERVAL);
+    //setInterval(tick, UPDATE_INTERVAL);
 
     return {
+        tick: tick
     };
 
 })();

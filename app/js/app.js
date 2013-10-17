@@ -1,5 +1,7 @@
 var Caboose = (function(){
 
+    var UPDATE_INTERVAL = 1000;
+
     var requestCount = 0;
     var requestSize  = 0;
     var reqTypeCount = {};
@@ -63,8 +65,15 @@ var Caboose = (function(){
 
     }
 
+    function go() {
+        TL.tick();
+        Timer.updateTime();
+        setTimeout(go, UPDATE_INTERVAL);
+    }
+
     return {
-        updateData: updateData
+        updateData: updateData,
+        go: go
     };
 
 })();

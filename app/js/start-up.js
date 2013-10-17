@@ -25,8 +25,7 @@
     }
 
     function connectionSuccess() {
-        Timer.start();
-        Timeline.start();
+        Caboose.go();
         StatusBar.setSuccess("Successfully connected.");
     }
 
