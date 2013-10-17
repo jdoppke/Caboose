@@ -29,11 +29,11 @@ var Timer = (function(){
     }
 
     function _formatDuration(sec) {
-        var sec   = Math.floor(sec % 60);
-        var min   = Math.floor(sec / 60);
+        var seconds = Math.floor(sec % 60);
+        var min = Math.floor(sec / 60);
         var hours = Math.floor(min / 60);
 
-        sec   = _addLeadingZero(sec);
+        sec   = _addLeadingZero(seconds);
         min   = _addLeadingZero(min);
         hours = _addLeadingZero(hours);
 
