@@ -4,9 +4,39 @@ var TL = (function() {
         return new Date(endTimeReference - (duration * 60 * 1000));
     }
 
+    function _formatRawData(rawData) {
+        var newData = [];
+        console.log(rawData);
+        for (var prop in rawData) {
+            newData.unshift({
+                "date": new Date(prop),
+                "req" : rawData[prop]
+            });
+        }
+        return newData;
+    }
+
     function tick() {
         x.domain([_startTime(new Date()), new Date()]);
         xAxisSel.call(xAxis);
+
+        if (!(new Date() in rawData)) {
+            rawData[new Date()] = 0;
+            console.log('zero');
+        }
+
+        data = _formatRawData(rawData);
+
+        svg.select(".line")
+            .attr("d", lineFunc(data));
+    }
+
+    function updateData(d) {
+        if (new Date(d.date) in rawData) {
+            rawData[new Date(d.date)]++;
+        } else {
+            rawData[new Date(d.date)] = 1;
+        }
     }
 
     var divWidth = $(".new-time-line-vis").offsetWidth;
@@ -17,14 +47,16 @@ var TL = (function() {
     var endTime = new Date();
     var duration = 3; // In minutes
     var startTime = _startTime(endTime);
-    var UPDATE_INTERVAL = 1000;
+
+    var data = [];
+    var rawData = {};
 
     var x = d3.time.scale()
         .domain([startTime, endTime])
         .range([0, width]);
 
     var y = d3.scale.linear()
-        .domain([0, 5])
+        .domain([0, 50])
         .range([height, 0]);
 
     var svg = d3.select(".new-time-line")
@@ -54,10 +86,18 @@ var TL = (function() {
 
     var xAxisSel = svg.selectAll(".x-axis");
 
-    //setInterval(tick, UPDATE_INTERVAL);
+    var lineFunc = d3.svg.line()
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.req); });
+
+    var path = svg.append("g")
+        .append("path")
+        .attr("class", "line")
+        .attr("d", lineFunc(data));
 
     return {
-        tick: tick
+        tick: tick,
+        updateData: updateData
     };
 
 })();
