@@ -6,7 +6,6 @@ var TL = (function() {
 
     function _formatRawData(rawData) {
         var newData = [];
-        console.log(rawData);
         for (var prop in rawData) {
             newData.unshift({
                 "date": new Date(prop),
@@ -17,18 +16,19 @@ var TL = (function() {
     }
 
     function tick() {
-        x.domain([_startTime(new Date()), new Date()]);
-        xAxisSel.call(xAxis);
-
         if (!(new Date() in rawData)) {
             rawData[new Date()] = 0;
-            console.log('zero');
         }
 
         data = _formatRawData(rawData);
 
-        svg.select(".line")
-            .attr("d", lineFunc(data));
+        x.domain([_startTime(new Date()), new Date()]);
+        xAxisSel.call(xAxis);
+
+        y.domain([0, d3.max(data, function(d) { return d.req; })]);
+        yAxisSel.call(yAxis);
+
+        svg.select(".line").attr("d", lineFunc(data));
     }
 
     function updateData(d) {
@@ -56,7 +56,7 @@ var TL = (function() {
         .range([0, width]);
 
     var y = d3.scale.linear()
-        .domain([0, 50])
+        .domain([0, 10])
         .range([height, 0]);
 
     var svg = d3.select(".new-time-line")
@@ -80,7 +80,7 @@ var TL = (function() {
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
-    svg.append("g")
+    var yAxisSel = svg.append("g")
         .attr("class", "axis y-axis")
         .call(yAxis);
 
