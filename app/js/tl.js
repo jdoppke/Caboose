@@ -7,10 +7,15 @@ var TL = (function() {
     function _formatRawData(rawData) {
         var newData = [];
         for (var prop in rawData) {
-            newData.unshift({
-                "date": new Date(prop),
-                "req" : rawData[prop]
-            });
+            if (new Date(prop) < startTime) {
+                delete rawData[prop];
+            } else {
+                newData.unshift({
+                    "date": new Date(prop),
+                    "req" : rawData[prop]
+                });
+            
+            }
         }
         return newData;
     }
@@ -22,7 +27,8 @@ var TL = (function() {
 
         data = _formatRawData(rawData);
 
-        x.domain([_startTime(new Date()), new Date()]);
+        startTime = _startTime(new Date());
+        x.domain([startTime, new Date()]);
         xAxisSel.call(xAxis);
 
         y.domain([0, d3.max(data, function(d) { return d.req; })]);
