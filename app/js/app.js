@@ -55,7 +55,6 @@ var Caboose = (function(){
         if (data) {
             _incrementData(data);
             BreakDown.update(_formatFileData(data));
-            Timeline.incrementReqCount();
             TL.updateData(data);
             SummaryBar.update(requestCount, requestSize);
             FireLine.fire();

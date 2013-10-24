@@ -14,7 +14,6 @@ var TL = (function() {
                     "date": new Date(prop),
                     "req" : rawData[prop]
                 });
-            
             }
         }
         return newData;
@@ -98,7 +97,7 @@ var TL = (function() {
 
     var path = svg.append("g")
         .append("path")
-        .attr("class", "line")
+        .attr("class", "line path")
         .attr("d", lineFunc(data));
 
     return {

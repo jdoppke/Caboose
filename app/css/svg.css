@@ -24,6 +24,10 @@ text {
     shape-rendering: crispEdges;
 }
 
+.line.path {
+    stroke: #9BBADB;
+}
+
 .grid line {
     fill: none;
     stroke-width: 1px;
