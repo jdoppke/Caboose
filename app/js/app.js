@@ -37,9 +37,15 @@ var Caboose = (function(){
             })();
 
         } else {
+            // Needs work...
             // Otherwise it's *probably* a path for a page (/user/name/),
             // might need some tweaking. Will eventually store the path.
-            reqTypeCount['path']++;
+            if (reqTypeCount['path']) {
+                reqTypeCount['path']++;
+            } else {
+                reqTypeCount['path'] = 0;
+            }
+            d
         }
         return newData;
     }
