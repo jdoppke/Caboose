@@ -92,8 +92,8 @@ header label {
     top: 200px;
     background: #fff;
     border-radius: 2px;
-    width: 300px;
-    margin-left: -150px;
+    width: 380px;
+    margin-left: -190px;
     left: 50%;
     padding: 20px;
 }
@@ -105,6 +105,15 @@ header label {
     color: #333;
     border-radius: 1px;
     background: #ebebeb;
+}
+
+input {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 2px;
+    padding: 5px;
+    width: 60%;
 }
 
 .fire-line {
