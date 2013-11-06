@@ -4,40 +4,40 @@
     <meta charset="utf-8" />
     <meta name="description" content="">
     <title>Caboose</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link href='css/screen.css' rel='stylesheet'>
-    <link href='css/tables.css' rel='stylesheet'>
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+    <link href="css/screen.css" rel="stylesheet">
+    <link href="css/tables.css" rel="stylesheet">
     <link href="css/status.css" rel="stylesheet">
-    <link href='css/svg.css' rel='stylesheet'>
+    <link href="css/svg.css" rel="stylesheet">
 </head>
 <body>
     <div class="status"></div>
-    <div class='container'>
-        <section class='overview'>
+    <div class="container">
+        <section class="overview">
             <div>
-                <span class='label'>Started</span>
-                <span id='first-request' class='value'></span>
+                <span class="label">Started</span>
+                <span id="first-request" class="value"></span>
             </div>
             <div>
-                <span class='lable'>Running Time</span>
-                <span id='running-time' class='value'>0</span>
+                <span class="label">Running Time</span>
+                <span id="running-time" class="value">0</span>
             </div>
             <div>
-                <span class='label'>Last Entry</span>
-                <span id='last-request' class='value'>0</span>
+                <span class="label">Last Entry</span>
+                <span id="last-request" class="value">0</span>
             </div>
             <div>
-                <span class='label'>Total Requests</span>
-                <span id='total-request' class='value'>0</span>
+                <span class="label">Total Requests</span>
+                <span id="total-request" class="value">0</span>
             </div>
             <div>
-                <span class='label'>Total Size Sent</span>
-                <span id='total-size' class='value'>0</span>
+                <span class="label">Total Size Sent</span>
+                <span id="total-size" class="value">0</span>
             </div>
         </section>
 
-        <section class='distribution'>
-            <div class='distro-vis'></div>
+        <section class="distribution">
+            <div class="distro-vis"></div>
         </section>
 
         <section class="new-time-line">
@@ -45,7 +45,7 @@
         </section>
 
         <section>
-            <table class='request-table'>
+            <table class="request-table">
                 <thead>
                     <tr>
                         <th>Timestamp</th>
@@ -56,15 +56,15 @@
                         <th>Response Size</th>
                     </tr>
                 </thead>
-                <tbody class='request-table-body'>
+                <tbody class="request-table-body">
                 </tbody>
             </table>
         </section>
 
-        <section class='fire-line'></section>
+        <section class="fire-line"></section>
 
-        <div class='overlay'></div>
-        <section class='begin-modal'>
+        <div class="overlay"></div>
+        <section class="begin-modal">
             <div class="intro">
                 <h1>Caboose</h1>
                 <p>A visual way to monitor server logs.</p>
@@ -85,7 +85,7 @@
                     Sync time to server
                 </label>
             </form>
-            <a id='start'>Start</a>
+            <a id="start">Start</a>
         </section>
 
         <footer>
@@ -98,16 +98,16 @@
 
     </div>
 
-    <script src='js/d3/d3.js'></script>
-    <script src='js/utility.js'></script>
+    <script src="js/d3/d3.js"></script>
+    <script src="js/utility.js"></script>
     <script src="js/tl.js"></script>
-    <script src='js/d3-break-down.js'></script>
+    <script src="js/d3-break-down.js"></script>
     <script src="js/status-bar.js"></script>
-    <script src='js/summary-bar.js'></script>
-    <script src='js/request-table.js'></script>
-    <script src='js/fire-line.js'></script>
-    <script src='js/timer.js'></script>
-    <script src='js/app.js'></script>
-    <script src='js/start-up.js'></script>
+    <script src="js/summary-bar.js"></script>
+    <script src="js/request-table.js"></script>
+    <script src="js/fire-line.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/start-up.js"></script>
 </body>
 </html>
