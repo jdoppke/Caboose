@@ -8,12 +8,12 @@ var Caboose = (function(){
 
     function _incrementData(data) {
         requestCount++;
-        requestSize += ++data['bytes'];
+        requestSize += ++data["bytes"];
     }
 
     function _formatFileData(data) {
-        var file = data['file'];
-        var dot  = file.indexOf('.');
+        var file = data["file"];
+        var dot  = file.indexOf(".");
 
         // Get the file extension if there is one
         if (dot !== -1) {
@@ -29,8 +29,8 @@ var Caboose = (function(){
                 var d = [];
                 for (var prop in reqTypeCount) {
                     d.push({
-                        'type': prop,
-                        'value': (reqTypeCount[prop]/requestCount) * 100
+                        "type": prop,
+                        "value": (reqTypeCount[prop]/requestCount) * 100
                     });
                 }
                 return d;
@@ -40,10 +40,10 @@ var Caboose = (function(){
             // Needs work...
             // Otherwise it's *probably* a path for a page (/user/name/),
             // might need some tweaking. Will eventually store the path.
-            if (reqTypeCount['path']) {
-                reqTypeCount['path']++;
+            if (reqTypeCount["path"]) {
+                reqTypeCount["path"]++;
             } else {
-                reqTypeCount['path'] = 0;
+                reqTypeCount["path"] = 0;
             }
             d
         }
