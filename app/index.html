@@ -65,11 +65,26 @@
 
         <div class='overlay'></div>
         <section class='begin-modal'>
-            <h1>Caboose</h1>
-            <p>A visual way to monitor server logs.</p>
-            <p>What URL track will Caboose be riding on today?</p>
-            <input type='text' name='track-path' placeholder='http://localhost/tracks'>
-            <br>
+            <div class="intro">
+                <h1>Caboose</h1>
+                <p>A visual way to monitor server logs.</p>
+            </div>
+            <form>
+                <h2>Setup</h2>
+                <label>
+                    <span>Tracks URL</span>
+                    <input type="text" name="track-path" placeholder="http://localhost/tracks">
+                </label>
+                <h2>Time Sync</h2>
+                <label>
+                    <input type="radio" name="time-sync" value="local" checked>
+                    Sync time to local computer
+                </label>
+                <label>
+                    <input type="radio" name="time-sync" value="server">
+                    Sync time to server
+                </label>
+            </form>
             <a id='start'>Start</a>
         </section>
 
