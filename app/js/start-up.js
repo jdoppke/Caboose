@@ -14,9 +14,13 @@
     startButton.addEventListener("click", startLog, false);
 
     function startLog(e) {
+
+        var timeSync = $("input[name=time-sync]:checked").value;
+
         // Default sources are just for dev/testing.
         EVENT_SRC = $("input[name='track-path']").value || DEFAULT_SRC;
-        console.log(EVENT_SRC);
+        EVENT_SRC += '?timeSync=' + timeSync;
+
         overlay.remove();
         modal.remove();
         makeConnection();
@@ -27,7 +31,7 @@
         ES.addEventListener("open", connectionSuccess, false);
         ES.addEventListener("message", Caboose.updateData, false);
         ES.addEventListener("error", connectionError, false);
-        ES.addEventListener("ping", function() {}, false);
+        ES.addEventListener("ping", pong, false);
     }
 
     function connectionSuccess() {
@@ -39,6 +43,10 @@
         ES.close();
         StatusBar.setError(errorStr);
         console.log(errorStr);
+    }
+
+    function pong(e) {
+        console.log(e);
     }
 
 })();
