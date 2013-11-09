@@ -13,7 +13,7 @@ var Caboose = (function(){
 
     function _formatFileData(data) {
         var file = data["file"];
-        var dot  = file.indexOf(".");
+        var dot  = file.lastIndexOf(".");
 
         // Get the file extension if there is one
         if (dot !== -1) {
@@ -37,15 +37,24 @@ var Caboose = (function(){
             })();
 
         } else {
-            // Needs work...
-            // Otherwise it's *probably* a path for a page (/user/name/),
-            // might need some tweaking. Will eventually store the path.
+            // Needs work and testing...
             if (reqTypeCount["path"]) {
                 reqTypeCount["path"]++;
             } else {
                 reqTypeCount["path"] = 0;
             }
-            d
+
+            var newData = (function() {
+                var d = [];
+                for (var prop in reqTypeCount) {
+                    d.push({
+                        "type": prop,
+                        "value": (reqTypeCount[prop]/requestCount) * 100
+                    });
+                }
+                return d;
+            })();
+
         }
         return newData;
     }

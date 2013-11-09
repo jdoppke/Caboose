@@ -50,7 +50,7 @@
     function pong(e) {
         // TODO: Use timestamp returned to find offset, incorporate into
         //       the UI.
-        console.log(e);
+        //console.log(e);
     }
 
 })();
