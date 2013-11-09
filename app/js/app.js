@@ -69,6 +69,7 @@ var Caboose = (function(){
         }
 
         if (data) {
+            console.log(identifyBrowser(data["user-agent"]));
             _incrementData(data);
             BreakDown.update(_formatFileData(data));
             TL.updateData(data);
