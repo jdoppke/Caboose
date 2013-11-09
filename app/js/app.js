@@ -5,6 +5,7 @@ var Caboose = (function(){
     var requestCount = 0;
     var requestSize  = 0;
     var reqTypeCount = {};
+    var timer;
 
     function _incrementData(data) {
         requestCount++;
@@ -81,12 +82,17 @@ var Caboose = (function(){
     function go() {
         TL.tick();
         Timer.updateTime();
-        setTimeout(go, UPDATE_INTERVAL);
+        timer = setTimeout(go, UPDATE_INTERVAL);
+    }
+
+    function stop() {
+        clearTimeout(timer);
     }
 
     return {
         updateData: updateData,
-        go: go
+        go: go,
+        stop: stop
     };
 
 })();

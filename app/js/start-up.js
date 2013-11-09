@@ -42,6 +42,7 @@
     }
 
     function connectionError(e) {
+        Caboose.stop();
         ES.close();
         StatusBar.setError(errorStr);
         console.log(errorStr);
