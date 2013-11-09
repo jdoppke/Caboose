@@ -1,9 +1,11 @@
 (function() {
 
     var EVENT_SRC = "";
+
     // Default sources are just for dev/testing.
-    var DEFAULT_SRC = "http://radar:8888/node";
-    var DEFAULT_SRC = "http://192.168.1.84:8888/node";
+    CONFIG.url = "http://radar:8888/node";
+    //var CONFIG.url = "http://192.168.1.84:8888/node";
+
     var modal = $(".begin-modal");
     var overlay = $(".overlay");
     var startButton = $("#start");
@@ -15,11 +17,11 @@
 
     function startLog(e) {
 
-        var timeSync = $("input[name=time-sync]:checked").value;
+        CONFIG.timeSync = $("input[name=time-sync]:checked").value;
 
         // Default sources are just for dev/testing.
-        EVENT_SRC = $("input[name='track-path']").value || DEFAULT_SRC;
-        EVENT_SRC += '?timeSync=' + timeSync;
+        EVENT_SRC = $("input[name='track-path']").value || CONFIG.url;
+        EVENT_SRC += '?timeSync=' + CONFIG.timeSync;
 
         overlay.remove();
         modal.remove();
@@ -46,6 +48,8 @@
     }
 
     function pong(e) {
+        // TODO: Use timestamp returned to find offset, incorporate into
+        //       the UI.
         console.log(e);
     }
 
