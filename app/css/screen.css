@@ -143,19 +143,19 @@ label {
 
 .fire {
     display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    width: 3px;
+    height: 3px;
     background: #333;
     position: absolute;
     left: 0;
     -webkit-transition-duration: 3s;
-    -webkit-transition-property: left;
+    -webkit-transition-property: left, opacity;
     -webkit-transition-timing-function: ease-in;
 }
 
 .fire.go {
     left: calc(100% - 10px);
+    opacity: 0;
 }
 
 footer {

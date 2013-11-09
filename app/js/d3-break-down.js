@@ -17,7 +17,7 @@ var BreakDown = (function() {
 
     var margin = {top: 10, right: 5, bottom: 20, left: 30};
     var width  = divWidth - margin.left - margin.right;
-    var height = 100 - margin.top - margin.bottom;
+    var height = 260 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal()
         .rangeBands([0, width], .2);
