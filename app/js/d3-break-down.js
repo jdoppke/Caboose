@@ -45,7 +45,7 @@ var BreakDown = (function() {
     // Add grid lines
     var yGrid = svg.append("g")
         .attr("class", "grid")
-        .attr("transform", "translate(0, " + 0 + ")")
+        .attr("transform", "translate(0, 0)")
         .call(_makeXaxis().tickSize(-width, 0, 0).tickFormat(""));
 
     // Add x-axis

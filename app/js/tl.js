@@ -1,5 +1,12 @@
 var TL = (function() {
 
+    function _makeGridLines() {
+        return d3.svg.axis()
+            .scale(y)
+            .ticks(5)
+            .orient("left");
+    }
+
     function _startTime(endTimeReference) {
         return new Date(endTimeReference - (duration * 60 * 1000));
     }
@@ -32,6 +39,8 @@ var TL = (function() {
 
         y.domain([0, d3.max(data, function(d) { return d.req; })]);
         yAxisSel.call(yAxis);
+
+        gridLines.call(_makeGridLines().tickSize(-width, 0, 0).tickFormat(""));
 
         svg.select(".line").attr("d", lineFunc(data));
     }
@@ -70,6 +79,10 @@ var TL = (function() {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top +")");
+
+    var gridLines = svg.append("g")
+        .attr("class", "grid")
+        .call(_makeGridLines().tickSize(-width, 0, 0).tickFormat(""));
 
     var xAxis = d3.svg.axis()
         .scale(x)
