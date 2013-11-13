@@ -1,4 +1,4 @@
-var TL = (function() {
+var TimeLine = (function() {
 
     function _makeGridLines() {
         return d3.svg.axis()

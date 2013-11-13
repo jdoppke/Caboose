@@ -72,7 +72,7 @@ var Caboose = (function(){
             console.log(identifyBrowser(data["user-agent"]));
             _incrementData(data);
             BreakDown.update(_formatFileData(data));
-            TL.updateData(data);
+            TimeLine.updateData(data);
             SummaryBar.update(requestCount, requestSize);
             FireLine.fire();
             Table.update(data);
@@ -81,7 +81,7 @@ var Caboose = (function(){
     }
 
     function go() {
-        TL.tick();
+        TimeLine.tick();
         Timer.updateTime();
         timer = setTimeout(go, UPDATE_INTERVAL);
     }
