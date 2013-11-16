@@ -56,10 +56,10 @@ var TimeLine = (function() {
     var divWidth = $(".new-time-line-vis").offsetWidth;
     var margin = {top: 5, right: 5, bottom: 20, left: 30};
     var width = divWidth - margin.left - margin.right;
-    var height = 100 - margin.top - margin.bottom;
+    var height = 130 - margin.top - margin.bottom;
 
     var endTime = new Date();
-    var duration = 3; // In minutes
+    var duration = 5; // In minutes
     var startTime = _startTime(endTime);
 
     var data = [];

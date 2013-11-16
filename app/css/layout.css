@@ -9,6 +9,11 @@
     width: 33%;
 }
 
+.browsers {
+    clear: left;
+    clear: right;
+}
+
 .fire-line {
     clear: both;
 }
