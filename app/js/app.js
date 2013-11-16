@@ -5,7 +5,19 @@ var Caboose = (function(){
     var requestCount = 0;
     var requestSize  = 0;
     var reqTypeCount = {};
+    var browserCount = {};
     var timer;
+
+    function _incrementBrowsers(userAgent) {
+        var browser = identifyBrowser(userAgent);
+
+        if (browser in browserCount) {
+            browserCount[browser]++;
+        } else {
+            browserCount[browser] = 1;
+        }
+        console.log(browserCount);
+    }
 
     function _incrementData(data) {
         requestCount++;
@@ -69,7 +81,7 @@ var Caboose = (function(){
         }
 
         if (data) {
-            console.log(identifyBrowser(data["user-agent"]));
+            _incrementBrowsers(data["user-agent"]);
             _incrementData(data);
             BreakDown.update(_formatFileData(data));
             TimeLine.updateData(data);
