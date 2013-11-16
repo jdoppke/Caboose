@@ -5,7 +5,7 @@
 
 var Table = (function(){
 
-    var ROW_COUNT = 10;
+    var ROW_COUNT = 20;
 
     var tBody = $('.request-table-body');
 

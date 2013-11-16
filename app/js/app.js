@@ -6,17 +6,32 @@ var Caboose = (function(){
     var requestSize  = 0;
     var reqTypeCount = {};
     var browserCount = {};
+    var browserHits  = 0;
     var timer;
 
     function _incrementBrowsers(userAgent) {
         var browser = identifyBrowser(userAgent);
+
+        browserHits++;
 
         if (browser in browserCount) {
             browserCount[browser]++;
         } else {
             browserCount[browser] = 1;
         }
-        console.log(browserCount);
+
+        var tally = [];
+        for (var browser in browserCount) {
+            tally.push({
+                "type": browser,
+                "value": (browserCount[browser]/browserHits) * 100
+            });
+        }
+
+
+        console.log(tally);
+        return tally;
+
     }
 
     function _incrementData(data) {
@@ -81,7 +96,7 @@ var Caboose = (function(){
         }
 
         if (data) {
-            _incrementBrowsers(data["user-agent"]);
+            BrowserBreakDown.update(_incrementBrowsers(data["user-agent"]));
             _incrementData(data);
             BreakDown.update(_formatFileData(data));
             TimeLine.updateData(data);
