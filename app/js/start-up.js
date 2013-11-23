@@ -3,7 +3,7 @@
     var EVENT_SRC = "";
 
     // Default sources are just for dev/testing.
-    CONFIG.url = "http://radar:8888/node";
+    CONFIG.url = "http://radar:8888/tracks/Tracks";
     //var CONFIG.url = "http://192.168.1.84:8888/node";
 
     var modal = $(".begin-modal");
