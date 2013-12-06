@@ -1,5 +1,27 @@
 var BrowserBreakDown = (function() {
 
+    function _incrementBrowsers(userAgent) {
+        var browser = identifyBrowser(userAgent);
+
+        browserHits++;
+
+        if (browser in browserCount) {
+            browserCount[browser]++;
+        } else {
+            browserCount[browser] = 1;
+        }
+
+        var tally = [];
+        for (var browser in browserCount) {
+            tally.push({
+                "type": browser,
+                "value": (browserCount[browser]/browserHits) * 100
+            });
+        }
+
+        return tally;
+    }
+
     function _makeXaxis() {
         return d3.svg.axis()
             .scale(y)
@@ -12,6 +34,9 @@ var BrowserBreakDown = (function() {
         var yCoor = y(d.value) - 2;
         return "translate("+xCoor+","+yCoor+")";
     }
+
+    var browserCount = {};
+    var browserHits  = 0;
 
     var divWidth = $('.browser-vis').offsetWidth;
 
@@ -62,7 +87,9 @@ var BrowserBreakDown = (function() {
     var xAxisSel = d3.selectAll(".browser-vis .x.axis");
     var yAxisSel = d3.selectAll(".browser-vis .y.axis");
 
-    function update(newData) {
+    function update(UA) {
+
+        var newData = _incrementBrowsers(UA);
 
         // Map new types to x-domain and update x-axis
         x.domain(newData.map(function(d) { return d.type; }));
