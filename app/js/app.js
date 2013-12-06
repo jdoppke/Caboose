@@ -1,63 +1,15 @@
 var Caboose = (function(){
 
     var UPDATE_INTERVAL = 1000;
-
-    var requestCount = 0;
     var requestSize  = 0;
-    var reqTypeCount = {};
+    var requestCount = 0;
     var timer;
 
     function _incrementData(data) {
+        // TODO: Use only one request count var, currently have two, one here
+        //       and another in FileBreakDown module.
         requestCount++;
         requestSize += ++data["bytes"];
-    }
-
-    function _formatFileData(data) {
-        var file = data["file"];
-        var dot  = file.lastIndexOf(".");
-
-        // Get the file extension if there is one
-        if (dot !== -1) {
-            var ext  = file.substring(dot + 1, file.length);
-
-            if (!reqTypeCount[ext]) {
-                reqTypeCount[ext] = 0;
-            }
-
-            reqTypeCount[ext]++;
-
-            var newData = (function() {
-                var d = [];
-                for (var prop in reqTypeCount) {
-                    d.push({
-                        "type": prop,
-                        "value": (reqTypeCount[prop]/requestCount) * 100
-                    });
-                }
-                return d;
-            })();
-
-        } else {
-            // Needs work and testing...
-            if (reqTypeCount["doc"]) {
-                reqTypeCount["doc"]++;
-            } else {
-                reqTypeCount["doc"] = 0;
-            }
-
-            var newData = (function() {
-                var d = [];
-                for (var prop in reqTypeCount) {
-                    d.push({
-                        "type": prop,
-                        "value": (reqTypeCount[prop]/requestCount) * 100
-                    });
-                }
-                return d;
-            })();
-
-        }
-        return newData;
     }
 
     function updateData(d) {
@@ -70,8 +22,8 @@ var Caboose = (function(){
 
         if (data) {
             BrowserBreakDown.update(data["user-agent"]);
+            BreakDown.update(data["file"]);
             _incrementData(data);
-            BreakDown.update(_formatFileData(data));
             TimeLine.updateData(data);
             SummaryBar.update(requestCount, requestSize);
             FireLine.fire();

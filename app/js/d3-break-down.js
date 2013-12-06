@@ -1,5 +1,56 @@
 var BreakDown = (function() {
 
+    function _formatFileData(file) {
+
+        requestCount++;
+
+        var dot  = file.lastIndexOf(".");
+
+        // Get the file extension if there is one
+        if (dot !== -1) {
+            var ext  = file.substring(dot + 1, file.length);
+
+            if (!reqTypeCount[ext]) {
+                reqTypeCount[ext] = 0;
+            }
+
+            reqTypeCount[ext]++;
+
+            var newData = (function() {
+                var d = [];
+                for (var prop in reqTypeCount) {
+                    d.push({
+                        "type": prop,
+                        "value": (reqTypeCount[prop]/requestCount) * 100
+                    });
+                }
+                return d;
+            })();
+
+        } else {
+            // Needs work and testing...
+            if (reqTypeCount["doc"]) {
+                reqTypeCount["doc"]++;
+            } else {
+                reqTypeCount["doc"] = 0;
+            }
+
+            var newData = (function() {
+                var d = [];
+                for (var prop in reqTypeCount) {
+                    d.push({
+                        "type": prop,
+                        "value": (reqTypeCount[prop]/requestCount) * 100
+                    });
+                }
+                return d;
+            })();
+
+        }
+        return newData;
+    }
+
+
     function _makeXaxis() {
         return d3.svg.axis()
             .scale(y)
@@ -12,6 +63,9 @@ var BreakDown = (function() {
         var yCoor = y(d.value) - 2;
         return "translate("+xCoor+","+yCoor+")";
     }
+
+    var requestCount = 0;
+    var reqTypeCount = {};
 
     var divWidth = $('.distro-vis').offsetWidth;
 
@@ -62,7 +116,10 @@ var BreakDown = (function() {
     var xAxisSel = d3.selectAll(".distro-vis .x.axis");
     var yAxisSel = d3.selectAll(".distro-vis .y.axis");
 
-    function update(newData) {
+    function update(file) {
+
+        var newData = _formatFileData(file);
+        console.log(newData);
 
         // Map new types to x-domain and update x-axis
         x.domain(newData.map(function(d) { return d.type; }));
