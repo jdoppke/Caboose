@@ -66,10 +66,10 @@ var Caboose = (function(){
 
         } else {
             // Needs work and testing...
-            if (reqTypeCount["path"]) {
-                reqTypeCount["path"]++;
+            if (reqTypeCount["doc"]) {
+                reqTypeCount["doc"]++;
             } else {
-                reqTypeCount["path"] = 0;
+                reqTypeCount["doc"] = 0;
             }
 
             var newData = (function() {

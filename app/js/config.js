@@ -1,4 +1,4 @@
-var CONFIG = {
+Caboose.config = {
 
     // The URL to connect to, first entered when starting app.
     url: null,
