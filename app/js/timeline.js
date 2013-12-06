@@ -45,7 +45,7 @@ var TimeLine = (function() {
         svg.select(".line").attr("d", lineFunc(data));
     }
 
-    function updateData(d) {
+    function update(d) {
         if (new Date(d.date) in rawData) {
             rawData[new Date(d.date)]++;
         } else {
@@ -123,7 +123,7 @@ var TimeLine = (function() {
 
     return {
         tick: tick,
-        updateData: updateData
+        update: update
     };
 
 })();

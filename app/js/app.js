@@ -21,13 +21,15 @@ var Caboose = (function(){
         }
 
         if (data) {
+            _incrementData(data);
+            SummaryBar.update(requestCount, requestSize);
+
             BrowserBreakDown.update(data["user-agent"]);
             FileBreakDown.update(data["file"]);
-            _incrementData(data);
-            TimeLine.updateData(data);
-            SummaryBar.update(requestCount, requestSize);
-            FireLine.fire();
+            TimeLine.update(data);
             Table.update(data);
+
+            FireLine.fire();
         }
 
     }
