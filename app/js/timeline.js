@@ -59,7 +59,7 @@ var TimeLine = (function() {
     var height = 130 - margin.top - margin.bottom;
 
     var endTime = new Date();
-    var duration = 5; // In minutes
+    var duration = 3; // In minutes
     var startTime = _startTime(endTime);
 
     var data = [];
@@ -108,9 +108,17 @@ var TimeLine = (function() {
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.req); });
 
+    // Add clip path to hide overflow.
+    svg.append("clipPath")
+        .attr("id", "time-line-clip")
+        .append("rect")
+        .attr("width", width)
+        .attr("height", height);
+
     var path = svg.append("g")
         .append("path")
         .attr("class", "line path")
+        .attr("clip-path", "url(#time-line-clip)")
         .attr("d", lineFunc(data));
 
     return {
