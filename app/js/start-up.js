@@ -13,6 +13,7 @@
 
     var errorStr = "Error connecting, check event source server or resource.";
 
+    setTimeout(function() { Modal.show(".begin-modal")}, 500);
     startButton.addEventListener("click", startLog, false);
 
     function startLog(e) {
@@ -23,8 +24,7 @@
         EVENT_SRC = $("input[name='track-path']").value || Caboose.config.url;
         EVENT_SRC += '?timeSync=' + Caboose.config.timeSync;
 
-        overlay.remove();
-        modal.remove();
+        Modal.hide(".begin-modal");
         makeConnection();
     }
 
