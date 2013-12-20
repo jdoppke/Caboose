@@ -73,31 +73,6 @@
 
         <section class="fire-line"></section>
 
-        <div class="overlay"></div>
-        <section class="begin-modal">
-            <div class="intro">
-                <h1>Caboose</h1>
-                <p>A visual way to monitor server logs.</p>
-            </div>
-            <form>
-                <h2>Setup</h2>
-                <label>
-                    <span>Tracks URL</span>
-                    <input type="text" name="track-path" placeholder="http://localhost/tracks">
-                </label>
-                <h2>Time Sync</h2>
-                <label>
-                    <input type="radio" name="time-sync" value="local" checked>
-                    Sync time to local computer
-                </label>
-                <label>
-                    <input type="radio" name="time-sync" value="server">
-                    Sync time to server
-                </label>
-            </form>
-            <a id="start" class="button">Start</a>
-        </section>
-
         <footer>
             <ul>
                 <li><a href="#">Credits</a></li>
@@ -105,8 +80,32 @@
             </ul>
             <p><span>Caboose</span> - A visual way to monitor server logs.</p>
         </footer>
-
     </div>
+
+    <div class="overlay"></div>
+    <section class="begin-modal">
+        <div class="intro">
+            <h1>Caboose</h1>
+            <p>A visual way to monitor server logs.</p>
+        </div>
+        <form>
+            <h2>Setup</h2>
+            <label>
+                <span>Tracks URL</span>
+                <input type="text" name="track-path" placeholder="http://localhost/tracks">
+            </label>
+            <h2>Time Sync</h2>
+            <label>
+                <input type="radio" name="time-sync" value="local" checked>
+                Sync time to local computer
+            </label>
+            <label>
+                <input type="radio" name="time-sync" value="server">
+                Sync time to server
+            </label>
+        </form>
+        <a id="start" class="button">Start</a>
+    </section>
 
     <script src="js/d3/d3.js"></script>
     <script src="js/utility.js"></script>
