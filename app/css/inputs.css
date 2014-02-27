@@ -1,0 +1,20 @@
+#start {
+    background: #ebebeb;
+    margin: 10px auto;
+    width: 100px;
+    display: block;
+}
+
+input[type="text"] {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 2px;
+    padding: 5px;
+    width: 60%;
+}
+
+label {
+    display: block;
+    padding: 5px 0;
+}
