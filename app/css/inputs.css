@@ -14,6 +14,11 @@ input[type="text"] {
     width: 60%;
 }
 
+input:focus {
+    border-color: #2D86E4;
+    outline: none;
+}
+
 label {
     display: block;
     padding: 5px 0;

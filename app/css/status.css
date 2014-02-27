@@ -1,8 +1,10 @@
 .status {
+    position: fixed;
     height: 0;
     line-height: 30px;
     padding: 0 10px;
     overflow: hidden;
+    width: 100%;
     -webkit-transition: height .33s linear, border .33s linear;
 }
 
