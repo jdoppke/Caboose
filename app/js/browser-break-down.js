@@ -3,12 +3,16 @@ var BrowserBreakDown = (function() {
     function _incrementBrowsers(userAgent) {
         var browser = identifyBrowser(userAgent);
 
-        browserHits++;
+        // If a browser is not identified, ignore for now.
+        // Maybe show this later in UI?
+        if (browser !== null) {
+            browserHits++;
 
-        if (browser in browserCount) {
-            browserCount[browser]++;
-        } else {
-            browserCount[browser] = 1;
+            if (browser in browserCount) {
+                browserCount[browser]++;
+            } else {
+                browserCount[browser] = 1;
+            }
         }
 
         var tally = [];

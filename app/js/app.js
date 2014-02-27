@@ -23,7 +23,6 @@ var Caboose = (function(){
         if (data) {
             _incrementData(data);
             SummaryBar.update(requestCount, requestSize);
-
             BrowserBreakDown.update(data["user-agent"]);
             FileBreakDown.update(data["file"]);
             TimeLine.update(data);
