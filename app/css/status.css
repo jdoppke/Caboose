@@ -1,16 +1,22 @@
-.status {
+.status-box {
     position: fixed;
-    height: 0;
-    line-height: 30px;
-    padding: 0 10px;
+    height: 35px;
+    left: 0;
+    line-height: 35px;
     overflow: hidden;
-    width: 100%;
-    -webkit-transition: height .33s linear, border .33s linear;
+    width: 0;
+    box-shadow: 0 0 5px rgba(0,0,0,.8);
+    -webkit-transition: width .5s linear;
 }
 
-.status.open {
-    height: 30px;
-    border-top: 2px solid;
+.status-box.open {
+    width: 100%;
+}
+
+.status {
+    padding: 0 10px;
+    height: 35px;
+    border-bottom: 2px solid;
 }
 
 .status.success {

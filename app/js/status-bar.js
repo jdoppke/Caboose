@@ -1,6 +1,6 @@
 var StatusBar = (function() {
 
-    var div = $(".status");
+    var div = $(".status-box");
     var DELAY = 5000;
 
     function _openStatus() {
@@ -12,14 +12,13 @@ var StatusBar = (function() {
     }
 
     function _setStatus(message, cls) {
-        div.textContent = message;
-        div.className = 'status ' + cls;
+        div.querySelector('div').textContent = message;
+        div.querySelector('div').className = 'status ' + cls;
         _openStatus();
 
         if (cls === 'success') {
             setTimeout(closeStatus, DELAY);
         }
-
     }
 
     function setError(message) {
