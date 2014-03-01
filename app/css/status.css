@@ -2,15 +2,18 @@
     position: fixed;
     height: 35px;
     left: 0;
+    top: -35px;
+    opacity: 0;
     line-height: 35px;
     overflow: hidden;
-    width: 0;
-    box-shadow: 0 0 5px rgba(0,0,0,.8);
-    -webkit-transition: width .5s linear;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    -webkit-transition: top .5s ease, opacity .5s ease;
 }
 
 .status-box.open {
-    width: 100%;
+    top: 0;
+    opacity: 1;
 }
 
 .status {
