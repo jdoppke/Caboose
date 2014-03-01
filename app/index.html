@@ -92,11 +92,16 @@
             <p>A visual way to monitor server logs.</p>
         </div>
         <form>
-            <h2>Setup</h2>
             <label>
                 <span>Tracks URL</span>
                 <input type="text" name="track-path" placeholder="http://localhost/tracks">
             </label>
+            <label>
+                <span>Time Range</span>
+                <input class="small" type="text" name="time-range" value="5"> minutes
+            </label>
+            <!--
+            Need to implement tracks.js support and put in UI.
             <h2>Time Sync</h2>
             <label>
                 <input type="radio" name="time-sync" value="local" checked>
@@ -106,6 +111,7 @@
                 <input type="radio" name="time-sync" value="server">
                 Sync time to server
             </label>
+            -->
         </form>
         <a id="start" class="button">Start</a>
     </section>

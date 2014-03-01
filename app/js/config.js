@@ -1,4 +1,4 @@
-Caboose.config = {
+Caboose.conf = {
 
     // The URL to connect to, first entered when starting app.
     url: null,
@@ -9,5 +9,8 @@ Caboose.config = {
 
     // If time is synced to the server, this will be what that time
     // offset is.
-    timeOffset: 0
+    timeOffset: 0,
+
+    // The time range the dashboard is covering (in minutes).
+    timeRange: 5
 };

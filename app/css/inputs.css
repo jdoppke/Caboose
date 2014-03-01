@@ -6,12 +6,19 @@
 }
 
 input[type="text"] {
-    margin: 0 0 20px;
-    padding: 0;
     border: 1px solid #888;
     border-radius: 2px;
-    padding: 5px;
-    width: 60%;
+    padding: 6px;
+    font-size: 12px;
+    width: 200px;
+    transition: border .33s ease;
+}
+
+input[type="text"].small {
+    width: 25px;
+}
+input[type="text"].medium {
+    width: 200px;
 }
 
 input:focus {
@@ -22,4 +29,10 @@ input:focus {
 label {
     display: block;
     padding: 5px 0;
+}
+
+label span {
+    width: 75px;
+    display: inline-block;
+    text-align: right;
 }

@@ -7,6 +7,7 @@
     border-radius: 2px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 1px #F5F3F3 inset;
+    text-decoration: none;
 
     background-image: -webkit-gradient(
         linear,
@@ -21,7 +22,7 @@
     background-image: -ms-linear-gradient(bottom, #FAFAFA 0%, #E6E6E6 100%);
     background-image: linear-gradient(to bottom, #FAFAFA 0%, #E6E6E6 100%);
 
-    -webkit-transition: all .3s ease;
+    transition: border .33s ease;
 }
 
 .button:hover {

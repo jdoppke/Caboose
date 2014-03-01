@@ -35,6 +35,21 @@ p {
     padding: 0 0 20px;
 }
 
+a {
+    color: #5F9AD8;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color .33s ease;
+}
+
+a:hover {
+    color: #2D86E4;
+}
+
+.mini {
+    font-size: 11px;
+}
+
 section {
     padding: 10px 20px;
 }

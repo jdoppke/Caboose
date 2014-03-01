@@ -3,8 +3,8 @@
     var EVENT_SRC = "";
 
     // Default sources are just for dev/testing.
-    Caboose.config.url = "http://radar:8888/tracks/Tracks";
-    //var CONFIG.url = "http://192.168.1.84:8888/node";
+    Caboose.conf.url = "http://radar:8888/tracks/Tracks";
+    //var Caboose.conf.url = "http://192.168.1.84:8888/node";
 
     var modal = $(".begin-modal");
     var overlay = $(".overlay");
@@ -18,11 +18,12 @@
 
     function startLog(e) {
 
-        Caboose.config.timeSync = $("input[name=time-sync]:checked").value;
+        Caboose.conf.timeRange = $("input[name=time-range]").value;
+        //Caboose.conf.timeSync = $("input[name=time-sync]:checked").value;
 
         // Default sources are just for dev/testing.
-        EVENT_SRC = $("input[name='track-path']").value || Caboose.config.url;
-        EVENT_SRC += '?timeSync=' + Caboose.config.timeSync;
+        EVENT_SRC = $("input[name='track-path']").value || Caboose.conf.url;
+        EVENT_SRC += '?timeSync=' + Caboose.conf.timeSync;
 
         Modal.hide(".begin-modal");
         makeConnection();
