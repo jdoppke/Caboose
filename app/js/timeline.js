@@ -59,7 +59,7 @@ var TimeLine = (function() {
     var height = 130 - margin.top - margin.bottom;
 
     var endTime = new Date();
-    var duration = 10; // In minutes
+    var duration = 3; // In minutes
     var startTime = _startTime(endTime);
 
     var data = [];

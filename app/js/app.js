@@ -5,6 +5,8 @@ var Caboose = (function(){
     var requestCount = 0;
     var timer;
 
+    var data = [];
+
     function _incrementData(data) {
         // TODO: Use only one request count var, currently have two, one here
         //       and another in FileBreakDown module.
@@ -28,7 +30,7 @@ var Caboose = (function(){
             TimeLine.update(data);
             Table.update(data);
 
-            FireLine.fire();
+            //FireLine.fire();
         }
 
     }
