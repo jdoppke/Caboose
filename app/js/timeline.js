@@ -59,7 +59,7 @@ var TimeLine = (function() {
     var height = 130 - margin.top - margin.bottom;
 
     var endTime = new Date();
-    var duration = 5; // Timeline range in minutes.
+    var duration; // Timeline range in minutes.
     var startTime = _startTime(endTime);
 
     var data = [];
@@ -121,7 +121,12 @@ var TimeLine = (function() {
         .attr("clip-path", "url(#time-line-clip)")
         .attr("d", lineFunc(data));
 
+    function init() {
+        duration = Caboose.conf.timeRange || 5; // Timeline range in minutes.
+    }
+
     return {
+        init: init,
         tick: tick,
         update: update
     };

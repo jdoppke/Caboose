@@ -26,6 +26,9 @@
         EVENT_SRC += '?timeSync=' + Caboose.conf.timeSync;
 
         Modal.hide(".begin-modal");
+
+        TimeLine.init();
+
         makeConnection();
     }
 
