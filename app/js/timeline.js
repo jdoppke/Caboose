@@ -14,11 +14,12 @@ var TimeLine = (function() {
     function _formatRawData(rawData) {
         var newData = [];
         for (var prop in rawData) {
-            if (new Date(prop) < startTime) {
+            var date = new Date(prop);
+            if (date < startTime) {
                 delete rawData[prop];
             } else {
                 newData.unshift({
-                    "date": new Date(prop),
+                    "date": date,
                     "req" : rawData[prop]
                 });
             }
@@ -43,13 +44,36 @@ var TimeLine = (function() {
         gridLines.call(_makeGridLines().tickSize(-width, 0, 0).tickFormat(""));
 
         svg.select(".line").attr("d", lineFunc(data));
+
+        // Update error points
+        var errPts = errorPts.selectAll(".errors").data(errorPoints);
+
+        errPts
+            .attr("cx", function(d) { return x(new Date(d[0])) - 1; })
+            .attr("cy", function(d) { return y(d[2]) - 1; });
+
+        errPts
+            .enter()
+            .append("circle")
+            .attr("class", "errors")
+            .attr("cx", function(d) {
+                return x(new Date(d[0]) - 1);
+            })
+            .attr("cy", function(d) { return y(d[2]) - 1; })
+            .attr("r", 2);
+
     }
 
     function update(d) {
-        if (new Date(d.date) in rawData) {
-            rawData[new Date(d.date)]++;
+        var date = new Date(d.date);
+        if (date in rawData) {
+            rawData[date]++;
         } else {
-            rawData[new Date(d.date)] = 1;
+            rawData[date] = 1;
+        }
+        if (d.status == 404) {
+            errorPoints.push([date, d, rawData[date]]);
+            console.log(date + " : " + rawData[date]);
         }
     }
 
@@ -64,6 +88,8 @@ var TimeLine = (function() {
 
     var data = [];
     var rawData = {};
+
+    var errorPoints = [];
 
     var x = d3.time.scale()
         .domain([startTime, endTime])
@@ -107,6 +133,10 @@ var TimeLine = (function() {
     var lineFunc = d3.svg.line()
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.req); });
+
+    // Add layer for error points
+    var errorPts = svg.append("g")
+        .attr("class", "error-points");
 
     // Add clip path to hide overflow.
     svg.append("clipPath")

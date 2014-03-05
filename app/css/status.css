@@ -8,7 +8,7 @@
     overflow: hidden;
     width: 100%;
     box-shadow: 0 0 5px rgba(0,0,0,.5);
-    -webkit-transition: top .5s ease, opacity .5s ease;
+    transition: top .5s ease, opacity .5s ease;
 }
 
 .status-box.open {
@@ -24,10 +24,10 @@
 
 .status.success {
     background: #CEF8CE;
-    border-color: green;
+    border-color: #19AE19;
 }
 
 .status.error {
     background: #FAD7D7;
-    border-color: red;
+    border-color: #BA1717;
 }
