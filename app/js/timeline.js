@@ -49,18 +49,27 @@ var TimeLine = (function() {
         var errPts = errorPts.selectAll(".errors").data(errorPoints);
 
         errPts
-            .attr("cx", function(d) { return x(new Date(d[0])) - 1; })
-            .attr("cy", function(d) { return y(d[2]) - 1; });
+            .attr("x1", function(d) {
+                return x(new Date(d[0]) - 1);
+            })
+            .attr("x2", function(d) {
+                return x(new Date(d[0]) - 1);
+            })
+            .attr("y1", 0)
+            .attr("y2", height);
 
         errPts
             .enter()
-            .append("circle")
+            .append("line")
             .attr("class", "errors")
-            .attr("cx", function(d) {
+            .attr("x1", function(d) {
                 return x(new Date(d[0]) - 1);
             })
-            .attr("cy", function(d) { return y(d[2]) - 1; })
-            .attr("r", 2);
+            .attr("x2", function(d) {
+                return x(new Date(d[0]) - 1);
+            })
+            .attr("y1", 0)
+            .attr("y2", height);
 
     }
 
@@ -134,10 +143,6 @@ var TimeLine = (function() {
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.req); });
 
-    // Add layer for error points
-    var errorPts = svg.append("g")
-        .attr("class", "error-points");
-
     // Add clip path to hide overflow.
     svg.append("clipPath")
         .attr("id", "time-line-clip")
@@ -150,6 +155,11 @@ var TimeLine = (function() {
         .attr("class", "line path")
         .attr("clip-path", "url(#time-line-clip)")
         .attr("d", lineFunc(data));
+
+    // Add layer for error points
+    var errorPts = svg.append("g")
+        .attr("class", "error-points")
+        .attr("clip-path", "url(#time-line-clip)");
 
     function init() {
         duration = Caboose.conf.timeRange || 5; // Timeline range in minutes.
