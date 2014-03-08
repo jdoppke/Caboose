@@ -4,8 +4,15 @@
     <meta charset="utf-8" />
     <meta name="description" content="">
     <title>Caboose</title>
+    <!-- 
+        logo : Hammersmith One or Patua One
+        body : Oswald
+    -->
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
     <link href="css/screen.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
     <link href="css/tables.css" rel="stylesheet">
@@ -17,7 +24,18 @@
 </head>
 <body>
     <div class="status-box"><div class="status"></div></div>
+
+    <header>
+        <h1 class="brand">Caboose</h1>
+        <ul>
+            <li><a href="#">Settings</a></li>
+        <ul>
+    </header>
+
+
+
     <div class="container">
+<!--
         <section class="overview">
             <div>
                 <span class="label">Started</span>
@@ -38,6 +56,29 @@
             <div>
                 <span class="label">Total Size Sent</span>
                 <span id="total-size" class="value">0</span>
+            </div>
+        </section>
+-->
+        <section class="bin-overview">
+            <div>
+                <h3>Total Request Count</h3>
+                <div class="val">3423</div>
+                <span class="note">+34 over 3387.4 avg</span>
+            </div>
+            <div>
+                <h3>Total Request Size</h3>
+                <div class="val">14.23 KB</div>
+                <span class="note">+13.78 b over 13.76 KB avg</span>
+            </div>
+            <div class="host">
+                <h3>Total Host Count</h3>
+                <div class="val">3</div>
+                <span class="note">+1.78 over 1.28 avg</span>
+            </div>
+            <div class="files">
+                <h3>Requested Files</h3>
+                <div class="val">3423</div>
+                <span class="note">+34 over 3387.4 avg</span>
             </div>
         </section>
 
@@ -84,6 +125,7 @@
         </footer>
     </div>
 
+<!--
     <div class="overlay show"></div>
 
     <section class="begin-modal modal">
@@ -100,7 +142,7 @@
                 <span>Time Range</span>
                 <input class="small" type="text" name="time-range" value="5"> minutes
             </label>
-            <!--
+            
             Need to implement tracks.js support and put in UI.
             <h2>Time Sync</h2>
             <label>
@@ -111,11 +153,11 @@
                 <input type="radio" name="time-sync" value="server">
                 Sync time to server
             </label>
-            -->
+            
         </form>
         <a id="start" class="button">Start</a>
     </section>
-
+-->
     <script src="js/d3/d3.js"></script>
     <script src="js/utility.js"></script>
     <script src="js/timeline.js"></script>
