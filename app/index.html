@@ -5,13 +5,11 @@
     <meta name="description" content="">
     <title>Caboose</title>
     <!-- 
-        logo : Hammersmith One or Patua One
+        logo : Patua One
         body : Oswald
+        small/svg text : helvetica/arial
     -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
     <link href="css/screen.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
@@ -32,10 +30,9 @@
         <ul>
     </header>
 
-
-
     <div class="container">
-<!--
+
+<!--    Remove for now,
         <section class="overview">
             <div>
                 <span class="label">Started</span>
@@ -59,26 +56,50 @@
             </div>
         </section>
 -->
+
         <section class="bin-overview">
-            <div>
-                <h3>Total Request Count</h3>
-                <div class="val">3423</div>
-                <span class="note">+34 over 3387.4 avg</span>
+            <div class="flex-large">
+                <h3>Request Count</h3>
+                <div class="multi-stats">
+                    <div class="sub-stat">
+                        <div class="val">3423</div>
+                        <span class="note">Total</span>
+                    </div>
+                    <div class="sub-stat">
+                        <div class="val">23.3</div>
+                        <span class="note">Per minute</span>
+                    </div>
+                    <div class="sub-stat">
+                        <div class="val">4.3</div>
+                        <span class="note">Per second</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h3>Total Request Size</h3>
-                <div class="val">14.23 KB</div>
-                <span class="note">+13.78 b over 13.76 KB avg</span>
+            <div class="flex-medium">
+                <h3>Request Size</h3>
+                <div class="multi-stats">
+                    <div class="sub-stat">
+                        <div class="val">14.23 KB</div>
+                        <span class="note">Total</span>
+                    </div>
+                    <div class="sub-stat">
+                        <div class="val">1.6 KB</div>
+                        <span class="note">Per request</span>
+                    </div>
+                </div>
             </div>
-            <div class="host">
-                <h3>Total Host Count</h3>
+            <div class="flex-small">
+                <h3>Average Serve Time</h3>
+                <div class="val">1.23</div>
+                <span class="note">seconds</span>
+            </div>
+            <div class="flex-small">
+                <h3>Unique Host Count</h3>
                 <div class="val">3</div>
-                <span class="note">+1.78 over 1.28 avg</span>
             </div>
-            <div class="files">
-                <h3>Requested Files</h3>
-                <div class="val">3423</div>
-                <span class="note">+34 over 3387.4 avg</span>
+            <div class="flex-small">
+                <h3>Request Errors</h3>
+                <div class="val">0</div>
             </div>
         </section>
 

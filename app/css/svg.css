@@ -24,12 +24,12 @@ text {
 }
 
 .bars {
-    fill: #9BBADB;
+    fill: #527FA2;
     shape-rendering: crispEdges;
 }
 
 .line.path {
-    stroke: #9BBADB;
+    stroke: #527FA2;
 }
 
 .grid line {
