@@ -103,11 +103,15 @@
             </div>
         </section>
 
-        <section class="new-time-line">
-            <h2>Request Count (per sec)</h2>
-            <div class="new-time-line-vis"></div>
-        </section>
+        <div class="data-vis-wrap">
+            <div class="data-vis">
 
+                <section class="time-line">
+                    <h2 class="graph-heading">Requests per second</h2>
+                    <div class="time-line-vis"></div>
+                </section>
+
+<!--
         <section class="requests">
             <table class="request-table">
                 <thead>
@@ -124,18 +128,21 @@
                 </tbody>
             </table>
         </section>
+-->
 
-        <section class="distribution">
-            <h2>File Types <small>(by hit count)</small></h2>
-            <div class="distro-vis"></div>
-        </section>
+                <div class="row">
+                    <section class="distribution">
+                        <h2>File Types <small>(by hit count)</small></h2>
+                        <div class="distro-vis"></div>
+                    </section>
+                    <section class="browsers">
+                        <h2>Browsers <small>(by hit count)</small></h2>
+                        <div class="browser-vis"></div>
+                    </section>
+                </div>
 
-        <section class="browsers">
-            <h2>Browsers <small>(by hit count)</small></h2>
-            <div class="browser-vis"></div>
-        </section>
-
-        <section class="fire-line"></section>
+            </div>
+        </div>
 
         <footer>
             <ul>

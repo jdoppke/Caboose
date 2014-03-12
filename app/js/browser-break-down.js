@@ -46,7 +46,7 @@ var BrowserBreakDown = (function() {
 
     var margin = {top: 10, right: 5, bottom: 20, left: 30};
     var width  = divWidth - margin.left - margin.right;
-    var height = 260 - margin.top - margin.bottom;
+    var height = 50 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal()
         .rangeBands([0, width], .2);
@@ -63,7 +63,7 @@ var BrowserBreakDown = (function() {
         .scale(y)
         .ticks(5)
         .orient("left");
-
+/*
     var svg = d3.select(".browser-vis")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -90,7 +90,7 @@ var BrowserBreakDown = (function() {
 
     var xAxisSel = d3.selectAll(".browser-vis .x.axis");
     var yAxisSel = d3.selectAll(".browser-vis .y.axis");
-
+*/
     function update(UA) {
 
         var newData = _incrementBrowsers(UA);

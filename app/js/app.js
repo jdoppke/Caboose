@@ -28,8 +28,7 @@ var Caboose = (function(){
             BrowserBreakDown.update(data["user-agent"]);
             FileBreakDown.update(data["file"]);
             TimeLine.update(data);
-            Table.update(data);
-
+            //Table.update(data);
             //FireLine.fire();
         }
 

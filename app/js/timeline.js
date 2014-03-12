@@ -86,8 +86,8 @@ var TimeLine = (function() {
         }
     }
 
-    var divWidth = $(".new-time-line-vis").offsetWidth;
-    var margin = {top: 5, right: 5, bottom: 20, left: 30};
+    var divWidth = $(".time-line-vis").offsetWidth;
+    var margin = {top: 5, right: 5, bottom: 20, left: 25};
     var width = divWidth - margin.left - margin.right;
     var height = 130 - margin.top - margin.bottom;
 
@@ -108,7 +108,7 @@ var TimeLine = (function() {
         .domain([0, 10])
         .range([height, 0]);
 
-    var svg = d3.select(".new-time-line")
+    var svg = d3.select(".time-line")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)

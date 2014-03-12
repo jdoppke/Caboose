@@ -34,6 +34,12 @@ h2 {
     color: #666;
 }
 
+.graph-heading {
+    font-size: 60%;
+    font-weight: normal;
+    font-family: helvetica, arial, sans-serif;
+}
+
 p {
     padding: 0 0 20px;
 }
@@ -222,41 +228,4 @@ header li a:hover {
 .fire.go {
     left: calc(100% - 10px);
     opacity: 0;
-}
-
-footer {
-    clear: both;
-    overflow: hidden;
-    border-top: 1px solid #bbb;
-    color: #999;
-    font-size: 11px;
-    padding: 10px;
-    margin: 20px;
-}
-
-footer a {
-    color: #999;
-    text-decoration: underline;
-}
-
-footer ul {
-    float: left;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-}
-
-footer ul li {
-    float: left;
-    margin-right: 12px;
-}
-
-footer p {
-    float: right;
-}
-
-footer span {
-    font-family: Lato, helvetica, arial, sans-serif;
-    font-variant: small-caps;
 }

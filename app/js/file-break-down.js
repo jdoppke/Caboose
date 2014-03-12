@@ -66,12 +66,12 @@ var FileBreakDown = (function() {
 
     var requestCount = 0;
     var reqTypeCount = {};
-
+/*
     var divWidth = $('.distro-vis').offsetWidth;
 
     var margin = {top: 10, right: 5, bottom: 20, left: 30};
     var width  = divWidth - margin.left - margin.right;
-    var height = 260 - margin.top - margin.bottom;
+    var height = 50 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal()
         .rangeBands([0, width], .2);
@@ -115,7 +115,7 @@ var FileBreakDown = (function() {
 
     var xAxisSel = d3.selectAll(".distro-vis .x.axis");
     var yAxisSel = d3.selectAll(".distro-vis .y.axis");
-
+*/
     function update(file) {
 
         var newData = _formatFileData(file);
