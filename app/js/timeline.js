@@ -87,9 +87,10 @@ var TimeLine = (function() {
     }
 
     var divWidth = $(".time-line-vis").offsetWidth;
-    var margin = {top: 5, right: 5, bottom: 20, left: 25};
+    var divHeight = $(".time-line").offsetHeight;
+    var margin = {top: 5, right: 5, bottom: 40, left: 25};
     var width = divWidth - margin.left - margin.right;
-    var height = 130 - margin.top - margin.bottom;
+    var height = divHeight - margin.top - margin.bottom;
 
     var endTime = new Date();
     var duration; // Timeline range in minutes.
