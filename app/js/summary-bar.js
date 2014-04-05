@@ -9,8 +9,15 @@ var SummaryBar = (function() {
 
     var serveTime = $('#req-serve')
 
-    var timeRange = Caboose.conf.timeRange;
-    var timeRangeInSec = timeRange * 60;
+    var timeRange;
+    var timeRangeInSec;
+
+    function init() {
+
+        timeRange = Caboose.conf.timeRange;
+        timeRangeInSec = timeRange * 60;
+
+    }
 
     function update(totalReq, totalSize) {
 
@@ -29,6 +36,7 @@ var SummaryBar = (function() {
     }
 
     return {
+        init: init,
         update: update
     };
 

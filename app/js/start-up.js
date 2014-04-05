@@ -29,6 +29,7 @@
         Modal.hide(".begin-modal");
 
         TimeLine.init();
+        SummaryBar.init();
 
         makeConnection();
     }
