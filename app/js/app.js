@@ -18,16 +18,21 @@ var Caboose = (function(){
 
         try {
             var data = JSON.parse(d.data);
+
+            // Keep track of all raw data.
+            DATA.rawData.push(data);
+
         } catch (e) {
             console.log(e);
         }
 
         if (data) {
-            _incrementData(data);
-            SummaryBar.update(requestCount, requestSize);
-            BrowserBreakDown.update(data["user-agent"]);
-            FileBreakDown.update(data["file"]);
-            TimeLine.update(data);
+            //console.log(DATA.rawData);
+            //_incrementData(data);
+            //SummaryBar.update(requestCount, requestSize);
+            //BrowserBreakDown.update(data["user-agent"]);
+            //FileBreakDown.update(data["file"]);
+            //TimeLine.update(data);
             //Table.update(data);
             //FireLine.fire();
         }
@@ -35,6 +40,8 @@ var Caboose = (function(){
     }
 
     function go() {
+        
+        DATA.compute();
         TimeLine.tick();
         Timer.updateTime();
         timer = setTimeout(go, UPDATE_INTERVAL);

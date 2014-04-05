@@ -12,5 +12,5 @@ Caboose.conf = {
     timeOffset: 0,
 
     // The time range the dashboard is covering (in minutes).
-    timeRange: 5
+    timeRange: 1
 };

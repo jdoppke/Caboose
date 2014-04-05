@@ -38,14 +38,16 @@ var TimeLine = (function() {
         x.domain([startTime, new Date()]);
         xAxisSel.call(xAxis);
 
-        y.domain([0, d3.max(data, function(d) { return d.req; })]);
+        //y.domain([0, d3.max(data, function(d) { return d.req; })]);
+        y.domain([0, d3.max(DATA.getTimelineData(), function(d) { return d.requestCount; })]);
         yAxisSel.call(yAxis);
 
         gridLines.call(_makeGridLines().tickSize(-width, 0, 0).tickFormat(""));
 
-        svg.select(".line").attr("d", lineFunc(data));
+        //svg.select(".line").attr("d", lineFunc(data));
+        svg.select(".line").attr("d", lineFunc(DATA.getTimelineData()));
 
-        // Update error points
+        /* Update error points
         var errPts = errorPts.selectAll(".errors").data(errorPoints);
 
         errPts
@@ -70,6 +72,7 @@ var TimeLine = (function() {
             })
             .attr("y1", 0)
             .attr("y2", height);
+        */
 
     }
 
@@ -142,7 +145,7 @@ var TimeLine = (function() {
 
     var lineFunc = d3.svg.line()
         .x(function(d) { return x(d.date); })
-        .y(function(d) { return y(d.req); });
+        .y(function(d) { return y(d.requestCount); });
 
     // Add clip path to hide overflow.
     svg.append("clipPath")
@@ -157,10 +160,11 @@ var TimeLine = (function() {
         .attr("clip-path", "url(#time-line-clip)")
         .attr("d", lineFunc(data));
 
-    // Add layer for error points
+    /* Add layer for error points
     var errorPts = svg.append("g")
         .attr("class", "error-points")
         .attr("clip-path", "url(#time-line-clip)");
+    */
 
     function init() {
         duration = Caboose.conf.timeRange || 5; // Timeline range in minutes.
