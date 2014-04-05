@@ -26,10 +26,10 @@
 }
 
 .button:hover {
-    border-color: #72A7DF;
+    border-color: rgba(82, 127, 162, 0.5);
     color: #222;
 }
 
 .button:active {
-    border-color: #2D86E4;
+    border-color: rgba(82, 127, 162, 1);
 }

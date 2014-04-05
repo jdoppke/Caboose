@@ -1,25 +1,3 @@
-/*
-.requests {
-    float: left;
-    width: 66%;
-}
-
-.browsers,
-.distribution {
-    float: right;
-    width: 33%;
-}
-
-.browsers {
-    clear: left;
-    clear: right;
-}
-
-.fire-line {
-    clear: both;
-}
-*/
-
 .data-vis-wrap {
     position: absolute;
     top: 152px;
