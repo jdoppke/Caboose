@@ -10,6 +10,11 @@
 
     // http://stackoverflow.com/questions/10420352/converting-file-size-in-bytes-to-human-readable
     function getReadableSize(bytes) {
+
+        if (bytes < 1024) {
+            return bytes.toFixed(2) + ' B';
+        }
+
         var i = -1;
         var byteUnits = ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         do {

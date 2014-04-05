@@ -33,65 +33,40 @@
 
     <div class="container">
 
-<!--    Remove for now,
-        <section class="overview">
-            <div>
-                <span class="label">Started</span>
-                <span id="first-request" class="value"></span>
-            </div>
-            <div>
-                <span class="label">Running Time</span>
-                <span id="running-time" class="value">0</span>
-            </div>
-            <div>
-                <span class="label">Last Entry</span>
-                <span id="last-request" class="value">0</span>
-            </div>
-            <div>
-                <span class="label">Total Requests</span>
-                <span id="total-request" class="value">0</span>
-            </div>
-            <div>
-                <span class="label">Total Size Sent</span>
-                <span id="total-size" class="value">0</span>
-            </div>
-        </section>
--->
-
         <section class="bin-overview">
             <div class="flex-large">
                 <h3>Request Count</h3>
                 <div class="multi-stats">
                     <div class="sub-stat">
-                        <div class="val">3423</div>
+                        <div class="val" id="requests-total">- -</div>
                         <span class="note">Total</span>
                     </div>
                     <div class="sub-stat">
-                        <div class="val">23.3</div>
+                        <div class="val" id="requests-per-min">- -</div>
                         <span class="note">Per minute</span>
                     </div>
                     <div class="sub-stat">
-                        <div class="val">4.3</div>
+                        <div class="val" id="requests-per-sec">- -</div>
                         <span class="note">Per second</span>
                     </div>
                 </div>
             </div>
             <div class="flex-medium">
-                <h3>Request Size</h3>
+                <h3>Response Size</h3>
                 <div class="multi-stats">
                     <div class="sub-stat">
-                        <div class="val">14.23 KB</div>
+                        <div class="val" id="req-size-total">- -</div>
                         <span class="note">Total</span>
                     </div>
                     <div class="sub-stat">
-                        <div class="val">1.6 KB</div>
+                        <div class="val" id="req-size-per-req">- -</div>
                         <span class="note">Per request</span>
                     </div>
                 </div>
             </div>
             <div class="flex-small">
                 <h3>Average Serve Time</h3>
-                <div class="val">1.23</div>
+                <div class="val" id="req-serve">- -</div>
                 <span class="note">seconds</span>
             </div>
             <div class="flex-small">
@@ -169,7 +144,7 @@
             </label>
             <label>
                 <span>Time Range</span>
-                <input class="small" type="text" name="time-range" value="5"> minutes
+                <input class="small" type="text" name="time-range" value="1"> minutes
             </label>
             
             <!--Need to implement tracks.js support and put in UI.
@@ -189,13 +164,13 @@
     </section>
 
     <script src="js/d3/d3.js"></script>
+
     <script src="js/utility.js"></script>
     <script src="js/data.js"></script>
     <script src="js/timeline.js"></script>
     <script src="js/file-break-down.js"></script>
     <script src="js/browser-break-down.js"></script>
     <script src="js/status-bar.js"></script>
-    <script src="js/summary-bar.js"></script>
     <script src="js/request-table.js"></script>
     <script src="js/fire-line.js"></script>
     <script src="js/timer.js"></script>
@@ -203,5 +178,6 @@
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
     <script src="js/start-up.js"></script>
+    <script src="js/summary-bar.js"></script>
 </body>
 </html>

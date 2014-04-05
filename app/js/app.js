@@ -44,6 +44,9 @@ var Caboose = (function(){
         DATA.compute();
         TimeLine.tick();
         Timer.updateTime();
+
+        SummaryBar.update();
+
         timer = setTimeout(go, UPDATE_INTERVAL);
     }
 

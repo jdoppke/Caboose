@@ -4,6 +4,7 @@
 
     // Default sources are just for dev/testing.
     Caboose.conf.url = "http://radar:8888/tracks/Tracks";
+    Caboose.conf.url = "http://localhost:8888/";
     //var Caboose.conf.url = "http://192.168.1.84:8888/node";
 
     var modal = $(".begin-modal");

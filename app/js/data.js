@@ -2,8 +2,9 @@ var DATA = (function() {
 
     var rawData = [];
 
-    //var timelineData = [];
     var timelineObj = {};
+    var totalBytes = 0;
+    var totalServeTime = 0;
 
     var rightBound;
     var leftBound;
@@ -22,9 +23,11 @@ var DATA = (function() {
 
     }
 
-    function incrementTimeline() {
+    function incrementData() {
 
         timelineObj = {};
+        totalBytes = 0;
+        totalServeTime = 0;
 
         for (var i=0; i<rawData.length; i++) {
 
@@ -42,6 +45,9 @@ var DATA = (function() {
                 };
 
             }
+
+            totalBytes += rawData[i].bytes;
+            totalServeTime += rawData[i]['serve-time']; // Change to camelCase.
 
         }
 
@@ -72,13 +78,23 @@ var DATA = (function() {
         // Make sure our data is within the bounds.
         cleanup();
 
-        // Total up request counts for timeline
-        incrementTimeline();
+        // Total up all request data.
+        incrementData();
 
+    }
+
+    function getTotalBytes() {
+        return totalBytes;
+    }
+
+    function getTotalServeTime() {
+        return totalServeTime;
     }
 
     return {
         rawData: rawData,
+        getTotalBytes: getTotalBytes,
+        getTotalServeTime: getTotalServeTime,
         compute: compute,
         getTimelineData: getTimelineData
     };
