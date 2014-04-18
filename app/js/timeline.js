@@ -13,6 +13,7 @@ var TimeLine = (function() {
 
     function tick() {
 
+        // Be nice to call this once and pass it in.
         var data = DATA.getTimelineData();
 
         startTime = _startTime(new Date());
@@ -65,8 +66,6 @@ var TimeLine = (function() {
     var startTime = _startTime(endTime);
 
     var data = [];
-    var rawData = {};
-
     var errorPoints = [];
 
     var x = d3.time.scale()

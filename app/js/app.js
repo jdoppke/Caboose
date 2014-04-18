@@ -6,14 +6,14 @@ var Caboose = (function(){
     var timer;
 
     var data = [];
-
+/*
     function _incrementData(data) {
         // TODO: Use only one request count var, currently have two, one here
         //       and another in FileBreakDown module.
         requestCount++;
         requestSize += ++data["bytes"];
     }
-
+*/
     function updateData(d) {
 
         try {
@@ -43,7 +43,7 @@ var Caboose = (function(){
         
         DATA.compute();
         TimeLine.tick();
-        Timer.updateTime();
+        //Timer.updateTime();
 
         SummaryBar.update();
 
