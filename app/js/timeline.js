@@ -11,41 +11,19 @@ var TimeLine = (function() {
         return new Date(endTimeReference - (duration * 60 * 1000));
     }
 
-    function _formatRawData(rawData) {
-        var newData = [];
-        for (var prop in rawData) {
-            var date = new Date(prop);
-            if (date < startTime) {
-                delete rawData[prop];
-            } else {
-                newData.unshift({
-                    "date": date,
-                    "req" : rawData[prop]
-                });
-            }
-        }
-        return newData;
-    }
-
     function tick() {
-        if (!(new Date() in rawData)) {
-            rawData[new Date()] = 0;
-        }
 
-        data = _formatRawData(rawData);
+        var data = DATA.getTimelineData();
 
         startTime = _startTime(new Date());
         x.domain([startTime, new Date()]);
         xAxisSel.call(xAxis);
 
-        //y.domain([0, d3.max(data, function(d) { return d.req; })]);
-        y.domain([0, d3.max(DATA.getTimelineData(), function(d) { return d.requestCount; })]);
+        y.domain([0, d3.max(data, function(d) { return d.requestCount; })]);
         yAxisSel.call(yAxis);
 
         gridLines.call(_makeGridLines().tickSize(-width, 0, 0).tickFormat(""));
-
-        //svg.select(".line").attr("d", lineFunc(data));
-        svg.select(".line").attr("d", lineFunc(DATA.getTimelineData()));
+        svg.select(".line").attr("d", lineFunc(data));
 
         /* Update error points
         var errPts = errorPts.selectAll(".errors").data(errorPoints);
@@ -74,19 +52,6 @@ var TimeLine = (function() {
             .attr("y2", height);
         */
 
-    }
-
-    function update(d) {
-        var date = new Date(d.date);
-        if (date in rawData) {
-            rawData[date]++;
-        } else {
-            rawData[date] = 1;
-        }
-        if (d.status == 404) {
-            errorPoints.push([date, d, rawData[date]]);
-            console.log(date + " : " + rawData[date]);
-        }
     }
 
     var divWidth = $(".time-line-vis").offsetWidth;
@@ -172,8 +137,7 @@ var TimeLine = (function() {
 
     return {
         init: init,
-        tick: tick,
-        update: update
+        tick: tick
     };
 
 })();
