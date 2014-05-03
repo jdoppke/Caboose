@@ -7,7 +7,8 @@ var SummaryBar = (function() {
     var sizeTotal = $('#req-size-total');
     var sizePerReq = $('#req-size-per-req');
 
-    var serveTime = $('#req-serve')
+    var serveTime = $('#req-serve');
+    var hostCnt = $('#unique-host-cnt');
 
     var timeRange;
     var timeRangeInSec;
@@ -29,9 +30,10 @@ var SummaryBar = (function() {
         reqPerSec.textContent = (dataLen / timeRangeInSec).toFixed(2);
 
         sizeTotal.textContent = getReadableSize(bytes);
-        sizePerReq.textContent = getReadableSize(bytes / dataLen);
+        sizePerReq.textContent = getReadableSize((bytes / dataLen) || 0);
 
-        serveTime.textContent = (DATA.getTotalServeTime() / dataLen).toFixed(2);
+        serveTime.textContent = ((DATA.getTotalServeTime() / dataLen) || 0).toFixed(2);
+        hostCnt.textContent = DATA.getHostCount();
 
     }
 

@@ -1,6 +1,6 @@
-var Caboose = (function(){
+(function(Caboose){
 
-    var UPDATE_INTERVAL = 1000;
+    var UPDATE_INTERVAL = Caboose.conf.updateInterval * 1000;
     var requestSize  = 0;
     var requestCount = 0;
     var timer;
@@ -54,10 +54,8 @@ var Caboose = (function(){
         clearTimeout(timer);
     }
 
-    return {
-        updateData: updateData,
-        go: go,
-        stop: stop
-    };
+    Caboose.updateData = updateData,
+    Caboose.go = go,
+    Caboose.stop = stop;
 
-})();
+})(Caboose);

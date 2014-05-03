@@ -1,3 +1,5 @@
+window.Caboose = {};
+
 Caboose.conf = {
 
     // The URL to connect to, first entered when starting app.
@@ -12,5 +14,10 @@ Caboose.conf = {
     timeOffset: 0,
 
     // The time range the dashboard is covering (in minutes).
-    timeRange: 1
+    timeRange: 1,
+
+    // Update interval (in seconds)
+    // How often the UI updates
+    updateInterval: 1
+
 };

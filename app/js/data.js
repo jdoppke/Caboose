@@ -9,6 +9,9 @@ var DATA = (function() {
     var rightBound;
     var leftBound;
 
+    var hosts = {};
+    var hostCnt = 0;
+
     function cleanup() {
 
         for (var i=0; i<rawData.length; i++) {
@@ -31,7 +34,9 @@ var DATA = (function() {
 
         for (var i=0; i<rawData.length; i++) {
 
-            var dateStamp = Math.floor(+new Date(rawData[i].date) / 1000);
+            var d = rawData[i];
+
+            var dateStamp = Math.floor(+new Date(d.date) / 1000);
 
             if (dateStamp in timelineObj) {
 
@@ -44,10 +49,16 @@ var DATA = (function() {
                     date: dateStamp
                 };
 
-            }
+            }d
 
-            totalBytes += rawData[i].bytes;
-            totalServeTime += rawData[i]['serve-time']; // Change to camelCase.
+            totalBytes += d.bytes;
+            totalServeTime += d['serve-time']; // Change to camelCase.
+
+            if (d['ip'] in hosts) {
+                hosts[d['ip']]++;
+            } else {
+                hosts[d['ip']] = 1;
+            }
 
         }
 
@@ -91,12 +102,17 @@ var DATA = (function() {
         return totalServeTime;
     }
 
+    function getHostCount() {
+        return Object.keys(hosts).length;
+    }
+
     return {
-        rawData: rawData,
-        getTotalBytes: getTotalBytes,
+        rawData          : rawData,
+        getTotalBytes    : getTotalBytes,
         getTotalServeTime: getTotalServeTime,
-        compute: compute,
-        getTimelineData: getTimelineData
+        compute          : compute,
+        getTimelineData  : getTimelineData,
+        getHostCount     : getHostCount
     };
 
 })();
