@@ -18,6 +18,6 @@ Caboose.conf = {
 
     // Update interval (in seconds)
     // How often the UI updates
-    updateInterval: 1
+    updateInterval: 5
 
 };
